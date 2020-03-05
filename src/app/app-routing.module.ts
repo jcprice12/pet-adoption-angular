@@ -5,6 +5,7 @@ import { CatsComponent } from './cats/cats.component';
 import { FishComponent } from './fish/fish.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   imports: [
@@ -24,6 +25,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
       }, {
         path: 'not-found',
         component: NotFoundComponent
+      }, {
+        path: 'login',
+        component: LoginComponent
       }, {
         path: '',
         redirectTo: '/home',

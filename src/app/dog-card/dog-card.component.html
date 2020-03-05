@@ -1,0 +1,10 @@
+<mat-card class="card">
+    <mat-card-header>
+        <div mat-card-avatar class="dog-icon"></div>
+        <mat-card-title>{{dog.name}}</mat-card-title>
+        <mat-card-subtitle *ngFor="let breed of dog.breeds">{{breed.name}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <p>{{dog.description}}</p>
+    </mat-card-content>
+</mat-card>
