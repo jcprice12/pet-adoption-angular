@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Dog } from '../models/dog';
+import { DogService } from '../services/dog.service';
 
 @Component({
   selector: 'app-dogs',
@@ -10,19 +11,12 @@ export class DogsComponent implements OnInit {
 
   dogs: Dog[];
 
-  constructor() { }
+  constructor(private readonly dogService: DogService) { }
 
   ngOnInit(): void {
-    this.dogs = [{
-      id: 1,
-      name: 'Buddy',
-      description: 'A good pupper.',
-      breeds: [
-        {
-          name: 'Labrador Retriever'
-        }
-      ]
-    }];
+    this.dogService.getDogs().subscribe((dogs) => {
+      this.dogs = dogs;
+    });
   }
 
 }
