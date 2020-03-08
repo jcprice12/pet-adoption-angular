@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Dog } from '../models/dog';
+import { PetWithBreeds } from '../models/pet-with-breeds';
 import { DogService } from '../services/dog.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { DogService } from '../services/dog.service';
 })
 export class DogsComponent implements OnInit {
 
-  dogs: Dog[];
+  dogs: PetWithBreeds[];
 
   constructor(private readonly dogService: DogService) { }
 

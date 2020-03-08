@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Dog } from '../models/dog';
+import { PetWithBreeds } from '../models/pet-with-breeds';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -10,7 +10,7 @@ export class DogService {
 
   constructor(private http: HttpClient) { }
 
-  public getDogs(): Observable<Dog[]>{
-    return this.http.get<Dog[]>('http://localhost:8080/dogs');
+  public getDogs(): Observable<PetWithBreeds[]> {
+    return this.http.get<PetWithBreeds[]>('http://localhost:8080/dogs');
   }
 }
