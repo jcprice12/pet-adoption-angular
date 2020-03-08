@@ -11,6 +11,6 @@ export class DogService {
   constructor(private http: HttpClient) { }
 
   public getDogs(): Observable<PetWithBreeds[]> {
-    return this.http.get<PetWithBreeds[]>('http://localhost:8080/dogs');
+    return this.http.get<PetWithBreeds[]>('api/dogs');
   }
 }
