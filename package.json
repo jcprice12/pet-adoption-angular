@@ -1,13 +1,16 @@
 {
   "name": "pet-adoption-angular",
   "version": "0.0.0",
+  "main": "server.js",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "start": "npm run ng:build:prod && node server.js",
+    "start:dev": "npm run ng:build:dev && node server.js",
+    "ng:start": "ng serve",
+    "ng:build:dev": "ng build",
+    "ng:build:prod": "ng build --prod",
+    "ng:test": "ng test",
+    "ng:lint": "ng lint",
+    "ng:e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +24,8 @@
     "@angular/platform-browser": "~9.0.3",
     "@angular/platform-browser-dynamic": "~9.0.3",
     "@angular/router": "~9.0.3",
+    "express": "^4.17.1",
+    "http-proxy-middleware": "^1.0.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
