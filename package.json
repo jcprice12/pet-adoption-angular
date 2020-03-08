@@ -4,7 +4,8 @@
   "author": "jcprice12",
   "description": "front-end to interact with https://github.com/jcprice12/pet-adoption",
   "engines": {
-    "node": "12.x"
+    "node": "12.x",
+    "npm": "6.x"
   },
   "main": "server.js",
   "scripts": {
@@ -21,6 +22,7 @@
   "dependencies": {
     "@angular/animations": "~9.0.3",
     "@angular/cdk": "^9.1.1",
+    "@angular/cli": "~9.0.4",
     "@angular/common": "~9.0.3",
     "@angular/compiler": "~9.0.3",
     "@angular/core": "~9.0.3",
@@ -37,7 +39,6 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.900.4",
-    "@angular/cli": "~9.0.4",
     "@angular/compiler-cli": "~9.0.3",
     "@angular/language-service": "~9.0.3",
     "@types/node": "^12.11.1",
