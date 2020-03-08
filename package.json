@@ -1,6 +1,11 @@
 {
   "name": "pet-adoption-angular",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "author": "jcprice12",
+  "description": "front-end to interact with https://github.com/jcprice12/pet-adoption",
+  "engines": {
+    "node": "12.x"
+  },
   "main": "server.js",
   "scripts": {
     "start": "npm run ng:build:prod && node server.js",
