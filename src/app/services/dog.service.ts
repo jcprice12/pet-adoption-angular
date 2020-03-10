@@ -4,11 +4,10 @@ import { PetWithBreeds } from '../models/pet-with-breeds';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DogService {
-
-  constructor(private readonly http: HttpClient) { }
+  constructor(private readonly http: HttpClient) {}
 
   public getDogs(): Observable<PetWithBreeds[]> {
     return this.http.get<PetWithBreeds[]>('api/dogs');

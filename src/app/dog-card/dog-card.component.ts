@@ -4,14 +4,12 @@ import { PetWithBreeds } from '../models/pet-with-breeds';
 @Component({
   selector: 'app-dog-card',
   templateUrl: './dog-card.component.html',
-  styleUrls: ['./dog-card.component.css']
+  styleUrls: ['./dog-card.component.css'],
 })
 export class DogCardComponent implements OnInit {
   @Input() dog: PetWithBreeds;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

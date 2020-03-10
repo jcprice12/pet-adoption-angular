@@ -12,34 +12,39 @@ import { LoginComponent } from './login/login.component';
     RouterModule.forRoot([
       {
         path: 'dogs',
-        component: DogsComponent
-      }, {
+        component: DogsComponent,
+      },
+      {
         path: 'cats',
-        component: CatsComponent
-      }, {
+        component: CatsComponent,
+      },
+      {
         path: 'fish',
-        component: FishComponent
-      }, {
+        component: FishComponent,
+      },
+      {
         path: 'home',
-        component: HomeComponent
-      }, {
+        component: HomeComponent,
+      },
+      {
         path: 'not-found',
-        component: NotFoundComponent
-      }, {
+        component: NotFoundComponent,
+      },
+      {
         path: 'login',
-        component: LoginComponent
-      }, {
+        component: LoginComponent,
+      },
+      {
         path: '',
         redirectTo: '/home',
-        pathMatch: 'full'
-      }, {
+        pathMatch: 'full',
+      },
+      {
         path: '**',
-        redirectTo: '/not-found'
-      }
-    ])
+        redirectTo: '/not-found',
+      },
+    ]),
   ],
-  exports: [
-    RouterModule
-  ]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -1,3 +1,3 @@
 export interface Breed {
-    name: string;
+  name: string;
 }

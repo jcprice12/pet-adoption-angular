@@ -8,9 +8,8 @@ describe('FishComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FishComponent ]
-    })
-    .compileComponents();
+      declarations: [FishComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -10,7 +10,7 @@
   "main": "server.js",
   "scripts": {
     "postinstall": "ng build --prod",
-    "format": "prettier",
+    "format": "prettier --write src/**/*.ts",
     "start": "node server.js",
     "start:dev": "npm run ng:build:dev && node server.js",
     "ng:start": "ng serve",

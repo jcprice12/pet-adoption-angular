@@ -22,16 +22,16 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     NotFoundComponent,
     LoginComponent,
-    DogCardComponent
+    DogCardComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatCardModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
