@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class DogService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private readonly http: HttpClient) { }
 
   public getDogs(): Observable<PetWithBreeds[]> {
     return this.http.get<PetWithBreeds[]>('api/dogs');
