@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { TokenService } from './token.service';
+import { Auth } from '../models/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -13,11 +14,11 @@ export class AuthService {
     private readonly tokenService: TokenService
   ) {}
 
-  public login(username: string, password: string): Observable<void> {
+  public login(auth: Auth): Observable<void> {
     return this.http
       .post<void>(
         '/api/users/login',
-        { username, password },
+        auth,
         { observe: 'response' }
       )
       .pipe(
