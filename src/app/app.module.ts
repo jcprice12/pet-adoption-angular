@@ -16,6 +16,7 @@ import { FishComponent } from './fish/fish.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     NotFoundComponent,
     LoginComponent,
     DogCardComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

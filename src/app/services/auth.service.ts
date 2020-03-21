@@ -27,4 +27,11 @@ export class AuthService {
         })
       );
   }
+
+  public register(auth: Auth): Observable<void> {
+    return this.http.post<void>(
+      '/api/users/register',
+      auth
+    )
+  }
 }

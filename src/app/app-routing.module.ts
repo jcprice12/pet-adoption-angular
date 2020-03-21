@@ -6,42 +6,47 @@ import { FishComponent } from './fish/fish.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   imports: [
     RouterModule.forRoot([
       {
         path: 'dogs',
-        component: DogsComponent,
+        component: DogsComponent
       },
       {
         path: 'cats',
-        component: CatsComponent,
+        component: CatsComponent
       },
       {
         path: 'fish',
-        component: FishComponent,
+        component: FishComponent
       },
       {
         path: 'home',
-        component: HomeComponent,
+        component: HomeComponent
       },
       {
         path: 'not-found',
-        component: NotFoundComponent,
+        component: NotFoundComponent
       },
       {
         path: 'login',
-        component: LoginComponent,
+        component: LoginComponent
+      },
+      {
+        path: 'register',
+        component: RegisterComponent
       },
       {
         path: '',
         redirectTo: '/home',
-        pathMatch: 'full',
+        pathMatch: 'full'
       },
       {
         path: '**',
-        redirectTo: '/not-found',
+        redirectTo: '/not-found'
       },
     ]),
   ],
