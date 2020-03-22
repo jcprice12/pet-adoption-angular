@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { PetWithBreeds } from '../models/pet-with-breeds';
+import { PetWithBreeds } from '../models/pet-with-breeds.model';
 import { Observable } from 'rxjs';
 
 @Injectable({

@@ -5,7 +5,7 @@ import {
   Validators,
   ValidationErrors,
 } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { ErrorStateMatcher } from '@angular/material/core';
 
 class PasswordsDoNotMatchErrorMatcher implements ErrorStateMatcher {

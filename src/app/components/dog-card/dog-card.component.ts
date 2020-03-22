@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PetWithBreeds } from '../models/pet-with-breeds';
+import { PetWithBreeds } from '../../models/pet-with-breeds.model';
 
 @Component({
   selector: 'app-dog-card',

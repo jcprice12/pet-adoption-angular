@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { TokenService } from './token.service';
-import { Auth } from '../models/auth';
+import { ApplicationUser } from '../models/application-user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -14,9 +14,9 @@ export class AuthService {
     private readonly tokenService: TokenService
   ) {}
 
-  public login(auth: Auth): Observable<void> {
+  public login(applicationUser: ApplicationUser): Observable<void> {
     return this.http
-      .post<void>('/api/users/login', auth, { observe: 'response' })
+      .post<void>('/api/users/login', applicationUser, { observe: 'response' })
       .pipe(
         map((response: HttpResponse<void>) => {
           this.tokenService.setToken(response.headers.get('Authorization'));
@@ -24,7 +24,7 @@ export class AuthService {
       );
   }
 
-  public register(auth: Auth): Observable<void> {
-    return this.http.post<void>('/api/users/register', auth);
+  public register(applicationUser: ApplicationUser): Observable<void> {
+    return this.http.post<void>('/api/users/register', applicationUser);
   }
 }

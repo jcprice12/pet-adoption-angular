@@ -8,7 +8,7 @@ export class TokenService {
 
   constructor() {}
 
-  public getToken(token: string) {
+  public getToken() {
     return this.token;
   }
 

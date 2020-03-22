@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { DogsComponent } from './dogs/dogs.component';
-import { CatsComponent } from './cats/cats.component';
-import { FishComponent } from './fish/fish.component';
-import { HomeComponent } from './home/home.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { DogsComponent } from './components/dogs/dogs.component';
+import { CatsComponent } from './components/cats/cats.component';
+import { FishComponent } from './components/fish/fish.component';
+import { HomeComponent } from './components/home/home.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   imports: [
