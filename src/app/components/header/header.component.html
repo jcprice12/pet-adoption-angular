@@ -1,5 +1,18 @@
 <mat-toolbar class="header" color="primary">
     <span>Pet Stop</span>
+    <button routerLink="/home" mat-icon-button matTooltip="home" aria-label="home">
+        <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="pets" [matMenuTriggerFor]="pets" aria-label="pets">
+        <mat-icon>pets</mat-icon>
+    </button>
     <span class="fill"></span>
-    <button routerLink="/login" mat-icon-button matTooltip="login" aria-label="login"><mat-icon>account_circle</mat-icon></button>
+    <button routerLink="/login" mat-icon-button matTooltip="login" aria-label="login">
+        <mat-icon>account_circle</mat-icon>
+    </button>
 </mat-toolbar>
+<mat-menu #pets="matMenu">
+    <a routerLink="/dogs" mat-menu-item>Dogs</a>
+    <a routerLink="/cats" mat-menu-item>Cats</a>
+    <a routerLink="/fish" mat-menu-item>Fish</a>
+</mat-menu>
