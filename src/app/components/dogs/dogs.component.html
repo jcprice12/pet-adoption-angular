@@ -1,3 +1,11 @@
 <app-header></app-header>
-<h2>Dogs</h2>
-<app-dog-card *ngFor="let dog of dogs" [dog]="dog"></app-dog-card>
+<mat-toolbar>
+    <span class="title">Dogs</span>
+</mat-toolbar>
+<div class="mdc-layout-grid">
+    <div class="mdc-layout-grid__inner">
+        <div class="mdc-layout-grid__cell--span-4" *ngFor="let dog of dogs">
+            <app-dog-card [dog]="dog"></app-dog-card>
+        </div>
+    </div>
+</div>
