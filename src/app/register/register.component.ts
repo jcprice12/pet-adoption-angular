@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl, ValidationErrors, FormGroupDirective, NgForm } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
+import { ErrorStateMatcher } from '@angular/material/core';
+
+class PasswordsDoNotMatchErrorMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl): boolean {
+      return control.parent.hasError('passwordsDoNotMatch') && control.touched;
+  }
+}
 
 @Component({
   selector: 'app-register',
@@ -8,12 +15,15 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  signUpForm = new FormGroup({
-    username: new FormControl('', [Validators.minLength(5), Validators.minLength(5)]),
+  readonly passwordsDoNotMatchErrorMatcher = new PasswordsDoNotMatchErrorMatcher();
+  readonly minUsernameLength = 5;
+  readonly minPasswordLength = 5;
+  readonly signUpForm = new FormGroup({
+    username: new FormControl('', [Validators.required, Validators.minLength(this.minUsernameLength)]),
     passwords: new FormGroup({
-      password: new FormControl('', [Validators.minLength(5), Validators.minLength(5)]),
-      confirmPassword: new FormControl('', [Validators.minLength(5), Validators.minLength(5)])
-    }, this.checkPasswordsMatch)
+      password: new FormControl('', [Validators.required, Validators.minLength(this.minPasswordLength)]),
+      confirmPassword: new FormControl()
+    }, this.passwordMatcherValidator)
   });
 
   constructor(private readonly authService: AuthService) { }
@@ -27,7 +37,7 @@ export class RegisterComponent implements OnInit {
     }).subscribe();
   }
 
-  private checkPasswordsMatch(passwordsFormGroup: FormGroup): ValidationErrors | null {
+  passwordMatcherValidator(passwordsFormGroup: FormGroup): ValidationErrors | null {
     return passwordsFormGroup.value.password === passwordsFormGroup.value.confirmPassword ? null : {
       passwordsDoNotMatch: true
     }

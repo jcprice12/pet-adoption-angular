@@ -8,9 +8,11 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  readonly minUsernameLength = 5;
+  readonly minPasswordLength = 5;
   loginForm = new FormGroup({
-    username: new FormControl('', [Validators.minLength(5), Validators.required]),
-    password: new FormControl('', [Validators.minLength(5), Validators.required])
+    username: new FormControl('', [Validators.minLength(this.minUsernameLength), Validators.required]),
+    password: new FormControl('', [Validators.minLength(this.minPasswordLength), Validators.required])
   });
 
   constructor(private readonly authService: AuthService) { }
