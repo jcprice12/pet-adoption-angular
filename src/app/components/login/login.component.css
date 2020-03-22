@@ -12,3 +12,8 @@
 .formField {
     width:100%;
 }
+
+.header {
+    position: absolute;
+    width:100%;
+}
