@@ -11,11 +11,17 @@ export class LoginComponent implements OnInit {
   readonly minUsernameLength = 5;
   readonly minPasswordLength = 5;
   loginForm = new FormGroup({
-    username: new FormControl('', [Validators.minLength(this.minUsernameLength), Validators.required]),
-    password: new FormControl('', [Validators.minLength(this.minPasswordLength), Validators.required])
+    username: new FormControl('', [
+      Validators.minLength(this.minUsernameLength),
+      Validators.required,
+    ]),
+    password: new FormControl('', [
+      Validators.minLength(this.minPasswordLength),
+      Validators.required,
+    ]),
   });
 
-  constructor(private readonly authService: AuthService) { }
+  constructor(private readonly authService: AuthService) {}
 
   ngOnInit(): void {}
 

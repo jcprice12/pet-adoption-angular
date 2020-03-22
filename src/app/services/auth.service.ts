@@ -16,11 +16,7 @@ export class AuthService {
 
   public login(auth: Auth): Observable<void> {
     return this.http
-      .post<void>(
-        '/api/users/login',
-        auth,
-        { observe: 'response' }
-      )
+      .post<void>('/api/users/login', auth, { observe: 'response' })
       .pipe(
         map((response: HttpResponse<void>) => {
           this.tokenService.setToken(response.headers.get('Authorization'));
@@ -29,9 +25,6 @@ export class AuthService {
   }
 
   public register(auth: Auth): Observable<void> {
-    return this.http.post<void>(
-      '/api/users/register',
-      auth
-    )
+    return this.http.post<void>('/api/users/register', auth);
   }
 }
