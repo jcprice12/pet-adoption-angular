@@ -1,35 +1,20 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { PetWithBreeds } from '../models/pet-with-breeds.model';
-import { PetUI } from '../models/pet-ui.model';
-import { map } from 'rxjs/operators';
 import { PetType } from '../models/pet-type.enum';
+import { PetWithBreedsForUIService } from './pet-with-breeds-for-ui.service';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
-export class DogService {
-  constructor(private readonly http: HttpClient) {}
-
-  public getDogs(): Observable<PetWithBreeds[]> {
-    return this.http.get<PetWithBreeds[]>('api/dogs');
+export class DogService extends PetWithBreedsForUIService {
+  constructor(http: HttpClient) {
+    super(http);
   }
 
-  public getDogsForUI(): Observable<PetUI[]> {
-    return this.getDogs().pipe(
-      map((dogs: PetWithBreeds[]) =>
-        dogs.map(dog => {
-          return {
-            id: dog.id,
-            name: dog.name,
-            image: dog.image,
-            description: dog.description,
-            type: PetType.DOG,
-            subTypes: dog.breeds.map(breed => breed.name),
-          };
-        })
-      )
-    );
+  protected getBaseUrl(): string {
+    return 'api/dogs';
+  }
+  protected getPetType(): PetType {
+    return PetType.DOG;
   }
 }

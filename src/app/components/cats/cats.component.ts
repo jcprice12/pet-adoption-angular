@@ -9,11 +9,11 @@ import { PetUI } from 'src/app/models/pet-ui.model';
 })
 export class CatsComponent implements OnInit {
   cats: PetUI[];
-  
+
   constructor(private readonly catService: CatService) {}
 
   ngOnInit(): void {
-    this.catService.getCatsForUI().subscribe(cats => {
+    this.catService.getPetsForUI().subscribe(cats => {
       this.cats = cats;
     });
   }

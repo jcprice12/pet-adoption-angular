@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FishService } from 'src/app/services/fish.service';
+import { PetUI } from 'src/app/models/pet-ui.model';
 
 @Component({
   selector: 'app-fish',
@@ -6,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./fish.component.css'],
 })
 export class FishComponent implements OnInit {
-  constructor() {}
+  fish: PetUI[];
 
-  ngOnInit(): void {}
+  constructor(private readonly fishService: FishService) {}
+
+  ngOnInit(): void {
+    this.fishService.getPetsForUI().subscribe(fish => {
+      this.fish = fish;
+    });
+  }
 }

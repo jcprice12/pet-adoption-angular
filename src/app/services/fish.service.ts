@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { PetType } from '../models/pet-type.enum';
-import { PetWithBreedsForUIService } from './pet-with-breeds-for-ui.service';
+import { PetWithSpeciesForUIService } from './pet-with-species-for-ui.service';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CatService extends PetWithBreedsForUIService {
+export class FishService extends PetWithSpeciesForUIService {
   constructor(http: HttpClient) {
     super(http);
   }
 
   protected getBaseUrl(): string {
-    return 'api/cats';
+    return 'api/fish';
   }
   protected getPetType(): PetType {
-    return PetType.CAT;
+    return PetType.FISH;
   }
 }

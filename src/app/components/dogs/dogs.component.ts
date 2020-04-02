@@ -13,7 +13,7 @@ export class DogsComponent implements OnInit {
   constructor(private readonly dogService: DogService) {}
 
   ngOnInit(): void {
-    this.dogService.getDogsForUI().subscribe(dogs => {
+    this.dogService.getPetsForUI().subscribe(dogs => {
       this.dogs = dogs;
     });
   }
