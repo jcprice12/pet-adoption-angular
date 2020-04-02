@@ -12,7 +12,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CatsComponent } from './components/cats/cats.component';
-import { DogCardComponent } from './components/dog-card/dog-card.component';
 import { DogsComponent } from './components/dogs/dogs.component';
 import { FishComponent } from './components/fish/fish.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -23,6 +22,10 @@ import { RegisterComponent } from './components/register/register.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { PetsGridComponent } from './components/pets-grid/pets-grid.component';
+import { PetCardComponent } from './components/pet-card/pet-card.component';
+import { PetsPageHeaderComponent } from './components/pets-page-header/pets-page-header.component';
+import { PetsPageComponent } from './components/pets-page/pets-page.component';
 
 @NgModule({
   declarations: [
@@ -33,9 +36,12 @@ import { MatGridListModule } from '@angular/material/grid-list';
     HomeComponent,
     NotFoundComponent,
     LoginComponent,
-    DogCardComponent,
     RegisterComponent,
     HeaderComponent,
+    PetsGridComponent,
+    PetCardComponent,
+    PetsPageHeaderComponent,
+    PetsPageComponent,
   ],
   imports: [
     BrowserModule,

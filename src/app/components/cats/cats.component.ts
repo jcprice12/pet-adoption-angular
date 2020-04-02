@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CatService } from 'src/app/services/cat.service';
+import { PetUI } from 'src/app/models/pet-ui.model';
 
 @Component({
   selector: 'app-cats',
@@ -6,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cats.component.css'],
 })
 export class CatsComponent implements OnInit {
-  constructor() {}
+  cats: PetUI[];
+  
+  constructor(private readonly catService: CatService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.catService.getCatsForUI().subscribe(cats => {
+      this.cats = cats;
+    });
+  }
 }

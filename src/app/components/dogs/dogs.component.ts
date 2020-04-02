@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PetWithBreeds } from '../../models/pet-with-breeds.model';
+import { PetUI } from 'src/app/models/pet-ui.model';
 import { DogService } from '../../services/dog.service';
 
 @Component({
@@ -8,12 +8,12 @@ import { DogService } from '../../services/dog.service';
   styleUrls: ['./dogs.component.css'],
 })
 export class DogsComponent implements OnInit {
-  dogs: PetWithBreeds[];
+  dogs: PetUI[];
 
   constructor(private readonly dogService: DogService) {}
 
   ngOnInit(): void {
-    this.dogService.getDogs().subscribe(dogs => {
+    this.dogService.getDogsForUI().subscribe(dogs => {
       this.dogs = dogs;
     });
   }
