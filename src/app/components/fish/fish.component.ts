@@ -1,20 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FishService } from 'src/app/services/fish.service';
-import { PetUI } from 'src/app/models/pet-ui.model';
+import { PetsComponent } from '../pets/pets.component';
 
 @Component({
   selector: 'app-fish',
   templateUrl: './fish.component.html',
   styleUrls: ['./fish.component.css'],
 })
-export class FishComponent implements OnInit {
-  fish: PetUI[];
-
-  constructor(private readonly fishService: FishService) {}
-
-  ngOnInit(): void {
-    this.fishService.getPetsForUI().subscribe(fish => {
-      this.fish = fish;
-    });
+export class FishComponent extends PetsComponent {
+  constructor(fishService: FishService) {
+    super(fishService);
   }
 }
