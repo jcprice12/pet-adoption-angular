@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormGroup,
-  FormControl,
-  Validators,
-  ValidationErrors,
-} from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
+import { FormComponent } from '../form.component';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { FormControl, FormGroup, Validators, ValidationErrors } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 
 class PasswordsDoNotMatchErrorMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl): boolean {
@@ -15,11 +11,11 @@ class PasswordsDoNotMatchErrorMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css'],
+  selector: 'app-register-form',
+  templateUrl: './register-form.component.html',
+  styleUrls: ['./register-form.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterFormComponent implements FormComponent {
   readonly passwordsDoNotMatchErrorMatcher = new PasswordsDoNotMatchErrorMatcher();
   readonly minUsernameLength = 5;
   readonly minPasswordLength = 5;
@@ -40,11 +36,9 @@ export class RegisterComponent implements OnInit {
     ),
   });
 
-  constructor(private readonly authService: AuthService) {}
+  constructor(private readonly authService: AuthService) { }
 
-  ngOnInit(): void {}
-
-  onSubmit() {
+  onSubmit(): void {
     this.authService
       .register({
         username: this.signUpForm.value.username,
@@ -60,7 +54,8 @@ export class RegisterComponent implements OnInit {
       passwordsFormGroup.value.confirmPassword
       ? null
       : {
-          passwordsDoNotMatch: true,
-        };
+        passwordsDoNotMatch: true,
+      };
   }
+
 }

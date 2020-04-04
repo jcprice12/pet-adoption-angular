@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
+import { FormComponent } from '../form.component';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  templateUrl: './login-form.component.html',
+  styleUrls: ['./login-form.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class LoginFormComponent implements FormComponent {
   readonly minUsernameLength = 5;
   readonly minPasswordLength = 5;
   loginForm = new FormGroup({
@@ -23,9 +23,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private readonly authService: AuthService) {}
 
-  ngOnInit(): void {}
-
-  onSubmit() {
+  onSubmit(): void {
     this.authService.login(this.loginForm.value).subscribe();
   }
 }
