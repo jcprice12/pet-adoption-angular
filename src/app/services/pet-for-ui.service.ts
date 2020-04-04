@@ -1,9 +1,9 @@
 import { Observable } from 'rxjs';
-import { PetUI } from '../models/pet-ui.model';
-import { Pet } from '../models/pet.model';
+import { PetUI } from '../models/ui/pet-ui.model';
+import { Pet } from '../models/rest-api/pet.model';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { PetType } from '../models/pet-type.enum';
+import { PetType } from '../models/ui/pet-type.enum';
 
 export abstract class PetForUIService<P extends Pet> {
   protected abstract getBaseUrl(): string;

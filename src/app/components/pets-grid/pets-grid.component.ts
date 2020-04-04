@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PetWithBreeds } from 'src/app/models/pet-with-breeds.model';
-import { PetUI } from 'src/app/models/pet-ui.model';
+import { PetWithBreeds } from 'src/app/models/rest-api/pet-with-breeds.model';
+import { PetUI } from 'src/app/models/ui/pet-ui.model';
 
 @Component({
   selector: 'app-pets-grid',

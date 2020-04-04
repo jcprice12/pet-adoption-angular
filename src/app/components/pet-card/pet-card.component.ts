@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PetUI } from 'src/app/models/pet-ui.model';
+import { PetUI } from 'src/app/models/ui/pet-ui.model';
 
 @Component({
   selector: 'app-pet-card',

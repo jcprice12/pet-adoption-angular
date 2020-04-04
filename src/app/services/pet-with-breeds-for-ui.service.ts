@@ -1,5 +1,5 @@
 import { PetForUIService } from './pet-for-ui.service';
-import { PetWithBreeds } from '../models/pet-with-breeds.model';
+import { PetWithBreeds } from '../models/rest-api/pet-with-breeds.model';
 
 export abstract class PetWithBreedsForUIService extends PetForUIService<
   PetWithBreeds

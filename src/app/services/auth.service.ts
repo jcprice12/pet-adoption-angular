@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { TokenService } from './token.service';
-import { ApplicationUser } from '../models/application-user.model';
+import { ApplicationUser } from '../models/rest-api/application-user.model';
 
 @Injectable({
   providedIn: 'root',

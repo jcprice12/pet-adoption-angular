@@ -26,9 +26,9 @@ import { PetsGridComponent } from './components/pets-grid/pets-grid.component';
 import { PetCardComponent } from './components/pet-card/pet-card.component';
 import { PetsPageHeaderComponent } from './components/pages/pets/pets-page-header/pets-page-header.component';
 import { PetsPageComponent } from './components/pages/pets/pets-page/pets-page.component';
-import { FormPageComponent } from './components/forms/form-page/form-page.component';
+import { FormPageComponent } from './components/pages/forms/form-page/form-page.component';
 import { LoginFormComponent } from './components/forms/login-form/login-form.component';
-import { FormDirective } from './directives/form.directive';
+import { FormDirective } from './directives/form/form.directive';
 import { RegisterFormComponent } from './components/forms/register-form/register-form.component';
 
 @NgModule({

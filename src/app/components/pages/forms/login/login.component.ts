@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { FormComponentWrapper } from '../../../forms/form-component-wrapper';
+import { FormComponentWrapper } from 'src/app/models/ui/form-component-wrapper.model';
 import { LoginFormComponent } from '../../../forms/login-form/login-form.component';
-import { FormLink } from 'src/app/components/forms/form-link';
+import { FormLink } from 'src/app/models/ui/form-link.model';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +10,9 @@ import { FormLink } from 'src/app/components/forms/form-link';
 })
 export class LoginComponent {
   title = 'Login';
-  loginFormComponentWrapper = new FormComponentWrapper(LoginFormComponent);
+  loginFormComponentWrapper:FormComponentWrapper = {
+    formComponent: LoginFormComponent
+  };
   linkToRegister: FormLink = {
     ariaLabel: 'register',
     link: '/register',

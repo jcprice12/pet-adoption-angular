@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PetType } from '../models/pet-type.enum';
+import { PetType } from '../models/ui/pet-type.enum';
 import { PetWithBreedsForUIService } from './pet-with-breeds-for-ui.service';
 import { HttpClient } from '@angular/common/http';
 

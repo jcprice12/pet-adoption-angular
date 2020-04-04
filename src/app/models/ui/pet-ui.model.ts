@@ -1,4 +1,4 @@
-import { Pet } from './pet.model';
+import { Pet } from '../rest-api/pet.model';
 import { PetType } from './pet-type.enum';
 
 export interface PetUI extends Pet {

@@ -1,7 +1,7 @@
 import { OnInit } from '@angular/core';
-import { PetUI } from 'src/app/models/pet-ui.model';
+import { PetUI } from 'src/app/models/ui/pet-ui.model';
 import { PetForUIService } from 'src/app/services/pet-for-ui.service';
-import { Pet } from 'src/app/models/pet.model';
+import { Pet } from 'src/app/models/rest-api/pet.model';
 
 export abstract class PetsComponent implements OnInit {
   pets: PetUI[];

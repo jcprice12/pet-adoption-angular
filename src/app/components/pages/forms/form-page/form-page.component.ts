@@ -5,9 +5,9 @@ import {
   ComponentFactoryResolver,
   ViewChild,
 } from '@angular/core';
-import { FormComponentWrapper } from '../form-component-wrapper';
-import { FormDirective } from 'src/app/directives/form.directive';
-import { FormLink } from '../form-link';
+import { FormComponentWrapper } from '../../../../models/ui/form-component-wrapper.model';
+import { FormDirective } from 'src/app/directives/form/form.directive';
+import { FormLink } from '../../../../models/ui/form-link.model';
 
 @Component({
   selector: 'app-form-page',
