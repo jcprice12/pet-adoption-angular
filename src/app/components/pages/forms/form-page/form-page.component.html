@@ -3,7 +3,7 @@
     <mat-card class="card">
         <mat-card-title>{{title}}</mat-card-title>
         <mat-card-content>
-            <ng-template app-form-directive></ng-template>
+            <ng-template appFormDirective></ng-template>
         </mat-card-content>
         <mat-card-actions align="end" *ngIf="formLink">
             <a [attr.aria-label]="formLink.ariaLabel" [routerLink]="formLink.link" mat-button>{{formLink.text}}</a>

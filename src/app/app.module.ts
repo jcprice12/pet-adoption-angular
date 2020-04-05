@@ -30,6 +30,7 @@ import { FormPageComponent } from './components/pages/forms/form-page/form-page.
 import { LoginFormComponent } from './components/forms/login-form/login-form.component';
 import { FormDirective } from './directives/form/form.directive';
 import { RegisterFormComponent } from './components/forms/register-form/register-form.component';
+import { AllPetsComponent } from './components/pages/pets/all-pets/all-pets.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { RegisterFormComponent } from './components/forms/register-form/register
     LoginFormComponent,
     FormDirective,
     RegisterFormComponent,
+    AllPetsComponent,
   ],
   imports: [
     BrowserModule,

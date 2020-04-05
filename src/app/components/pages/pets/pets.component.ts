@@ -1,15 +1,14 @@
 import { OnInit } from '@angular/core';
 import { PetUI } from 'src/app/models/ui/pet-ui.model';
-import { PetForUIService } from 'src/app/services/pet-for-ui.service';
-import { Pet } from 'src/app/models/rest-api/pet.model';
+import { GetPetsForUIService } from 'src/app/services/get-pets-for-ui.service';
 
 export abstract class PetsComponent implements OnInit {
   pets: PetUI[];
 
-  constructor(private readonly petForUIService: PetForUIService<Pet>) {}
+  constructor(private readonly getPetsForUIService: GetPetsForUIService) {}
 
   ngOnInit(): void {
-    this.petForUIService.getPetsForUI().subscribe(pets => {
+    this.getPetsForUIService.getPetsForUI().subscribe(pets => {
       this.pets = pets;
     });
   }

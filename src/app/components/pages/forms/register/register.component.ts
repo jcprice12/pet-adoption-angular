@@ -11,11 +11,11 @@ import { FormLink } from 'src/app/models/ui/form-link.model';
 export class RegisterComponent {
   title = 'Sign Up';
   registerFormComponentWrapper: FormComponentWrapper = {
-    formComponent: RegisterFormComponent
+    formComponent: RegisterFormComponent,
   };
   linkToLogin: FormLink = {
     ariaLabel: 'login',
     link: '/login',
-    text: 'Already Have an Account?'
+    text: 'Already Have an Account?',
   };
 }

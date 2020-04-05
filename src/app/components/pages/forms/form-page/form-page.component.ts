@@ -1,12 +1,12 @@
 import {
   Component,
-  OnInit,
-  Input,
   ComponentFactoryResolver,
+  Input,
+  OnInit,
   ViewChild,
 } from '@angular/core';
-import { FormComponentWrapper } from '../../../../models/ui/form-component-wrapper.model';
 import { FormDirective } from 'src/app/directives/form/form.directive';
+import { FormComponentWrapper } from '../../../../models/ui/form-component-wrapper.model';
 import { FormLink } from '../../../../models/ui/form-link.model';
 
 @Component({

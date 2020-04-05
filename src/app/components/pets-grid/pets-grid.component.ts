@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { PetWithBreeds } from 'src/app/models/rest-api/pet-with-breeds.model';
+import { Component, Input, OnInit } from '@angular/core';
 import { PetUI } from 'src/app/models/ui/pet-ui.model';
 
 @Component({

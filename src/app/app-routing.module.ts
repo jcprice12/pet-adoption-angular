@@ -7,6 +7,7 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 import { LoginComponent } from './components/pages/forms/login/login.component';
 import { RegisterComponent } from './components/pages/forms/register/register.component';
+import { AllPetsComponent } from './components/pages/pets/all-pets/all-pets.component';
 
 @NgModule({
   imports: [
@@ -22,6 +23,10 @@ import { RegisterComponent } from './components/pages/forms/register/register.co
       {
         path: 'fish',
         component: FishComponent,
+      },
+      {
+        path: 'all-pets',
+        component: AllPetsComponent,
       },
       {
         path: 'home',

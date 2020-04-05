@@ -1,8 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { FormComponent } from '../form.component';
+import { Component } from '@angular/core';
+import {
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { FormControl, FormGroup, Validators, ValidationErrors } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { FormComponent } from '../form.component';
 
 class PasswordsDoNotMatchErrorMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl): boolean {
@@ -13,7 +18,7 @@ class PasswordsDoNotMatchErrorMatcher implements ErrorStateMatcher {
 @Component({
   selector: 'app-register-form',
   templateUrl: './register-form.component.html',
-  styleUrls: ['./register-form.component.css']
+  styleUrls: ['./register-form.component.css'],
 })
 export class RegisterFormComponent implements FormComponent {
   readonly passwordsDoNotMatchErrorMatcher = new PasswordsDoNotMatchErrorMatcher();
@@ -36,7 +41,7 @@ export class RegisterFormComponent implements FormComponent {
     ),
   });
 
-  constructor(private readonly authService: AuthService) { }
+  constructor(private readonly authService: AuthService) {}
 
   onSubmit(): void {
     this.authService
@@ -54,8 +59,7 @@ export class RegisterFormComponent implements FormComponent {
       passwordsFormGroup.value.confirmPassword
       ? null
       : {
-        passwordsDoNotMatch: true,
-      };
+          passwordsDoNotMatch: true,
+        };
   }
-
 }

@@ -4,8 +4,10 @@ import { Pet } from '../models/rest-api/pet.model';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { PetType } from '../models/ui/pet-type.enum';
+import { GetPetsForUIService } from './get-pets-for-ui.service';
 
-export abstract class PetForUIService<P extends Pet> {
+export abstract class PetForUIService<P extends Pet>
+  implements GetPetsForUIService {
   protected abstract getBaseUrl(): string;
   protected abstract getPetType(): PetType;
   protected abstract mapPetSubTypes(p: P): string[];

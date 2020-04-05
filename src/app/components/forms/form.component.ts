@@ -1,3 +1,3 @@
 export interface FormComponent {
-    onSubmit(): void;
+  onSubmit(): void;
 }
