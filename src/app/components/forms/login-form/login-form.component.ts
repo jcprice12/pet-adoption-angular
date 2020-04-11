@@ -10,7 +10,7 @@ import { UserNamePasswordFormComponent } from '../username-password-form.compone
 })
 export class LoginFormComponent extends UserNamePasswordFormComponent
   implements FormComponent {
-  loginForm = new FormGroup({
+  readonly loginForm = new FormGroup({
     username: this.usernameFormControl,
     password: this.passwordFormControl,
   });

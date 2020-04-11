@@ -4,9 +4,7 @@ import { LoginFormComponent } from '../../../forms/login-form/login-form.compone
 import { FormLink } from 'src/app/models/ui/form-link.model';
 
 @Component({
-  selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
   title = 'Login';

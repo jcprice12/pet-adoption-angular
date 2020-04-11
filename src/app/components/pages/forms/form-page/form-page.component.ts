@@ -15,10 +15,10 @@ import { FormLink } from '../../../../models/ui/form-link.model';
   styleUrls: ['./form-page.component.css'],
 })
 export class FormPageComponent implements OnInit {
-  @Input() title: string;
-  @Input() formComponentWrapper: FormComponentWrapper;
-  @Input() formLink: FormLink;
-  @ViewChild(FormDirective, { static: true }) formHost: FormDirective;
+  @Input() readonly title: string;
+  @Input() readonly formComponentWrapper: FormComponentWrapper;
+  @Input() readonly formLink: FormLink;
+  @ViewChild(FormDirective, { static: true }) readonly formHost: FormDirective;
 
   constructor(
     private readonly componentFactoryResolver: ComponentFactoryResolver
@@ -32,7 +32,6 @@ export class FormPageComponent implements OnInit {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
       this.formComponentWrapper.formComponent
     );
-    const viewContainerRef = this.formHost.viewContainerRef;
-    viewContainerRef.createComponent(componentFactory);
+    this.formHost.viewContainerRef.createComponent(componentFactory);
   }
 }

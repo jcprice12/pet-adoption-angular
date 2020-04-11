@@ -4,12 +4,11 @@ import { DogService } from 'src/app/services/dog.service';
 import { FormComponent } from '../form.component';
 
 @Component({
-  selector: 'app-new-dog-form',
   templateUrl: './new-dog-form.component.html',
   styleUrls: ['./new-dog-form.component.css'],
 })
 export class NewDogFormComponent implements FormComponent {
-  newDogForm = new FormGroup({
+  readonly newDogForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
     description: new FormControl(''),
   });

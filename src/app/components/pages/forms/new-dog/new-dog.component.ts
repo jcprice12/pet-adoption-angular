@@ -3,13 +3,11 @@ import { NewDogFormComponent } from 'src/app/components/forms/new-dog-form/new-d
 import { FormComponentWrapper } from 'src/app/models/ui/form-component-wrapper.model';
 
 @Component({
-  selector: 'app-new-dog',
   templateUrl: './new-dog.component.html',
-  styleUrls: ['./new-dog.component.css'],
 })
 export class NewDogComponent {
-  title = 'New Dog';
-  newDogFormComponentWrapper: FormComponentWrapper = {
+  readonly title = 'New Dog';
+  readonly newDogFormComponentWrapper: FormComponentWrapper = {
     formComponent: NewDogFormComponent,
   };
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { PetUI } from 'src/app/models/ui/pet-ui.model';
 
 @Component({
@@ -6,10 +6,6 @@ import { PetUI } from 'src/app/models/ui/pet-ui.model';
   templateUrl: './pet-card.component.html',
   styleUrls: ['./pet-card.component.css'],
 })
-export class PetCardComponent implements OnInit {
-  @Input() pet: PetUI;
-
-  constructor() {}
-
-  ngOnInit(): void {}
+export class PetCardComponent {
+  @Input() readonly pet: PetUI;
 }

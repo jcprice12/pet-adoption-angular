@@ -4,16 +4,14 @@ import { RegisterFormComponent } from 'src/app/components/forms/register-form/re
 import { FormLink } from 'src/app/models/ui/form-link.model';
 
 @Component({
-  selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
-  title = 'Sign Up';
-  registerFormComponentWrapper: FormComponentWrapper = {
+  readonly title = 'Sign Up';
+  readonly registerFormComponentWrapper: FormComponentWrapper = {
     formComponent: RegisterFormComponent,
   };
-  linkToLogin: FormLink = {
+  readonly linkToLogin: FormLink = {
     ariaLabel: 'login',
     link: '/login',
     text: 'Already Have an Account?',

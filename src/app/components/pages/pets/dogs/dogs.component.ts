@@ -4,12 +4,10 @@ import { PetsComponent } from '../pets.component';
 import { IconLink } from 'src/app/models/ui/icon-link.model';
 
 @Component({
-  selector: 'app-dogs',
   templateUrl: './dogs.component.html',
-  styleUrls: ['./dogs.component.css'],
 })
 export class DogsComponent extends PetsComponent {
-  iconLinks: IconLink[] = [
+  readonly iconLinks: IconLink[] = [
     {
       url: '/new-dog',
       toolTip: 'new dog',
