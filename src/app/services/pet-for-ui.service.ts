@@ -5,14 +5,19 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { PetType } from '../models/ui/pet-type.enum';
 import { GetPetsForUIService } from './get-pets-for-ui.service';
+import { NewPetService } from './new-pet.service';
 
 export abstract class PetForUIService<P extends Pet>
-  implements GetPetsForUIService {
+  implements GetPetsForUIService, NewPetService<P> {
   protected abstract getBaseUrl(): string;
   protected abstract getPetType(): PetType;
   protected abstract mapPetSubTypes(p: P): string[];
 
   constructor(private readonly http: HttpClient) {}
+
+  public addNewPet(pet: Partial<P>): Observable<P> {
+    return this.http.post<P>(this.getBaseUrl(), pet);
+  }
 
   public getPets(): Observable<P[]> {
     return this.http.get<P[]>(this.getBaseUrl());

@@ -8,6 +8,7 @@ import { NotFoundComponent } from './components/pages/not-found/not-found.compon
 import { LoginComponent } from './components/pages/forms/login/login.component';
 import { RegisterComponent } from './components/pages/forms/register/register.component';
 import { AllPetsComponent } from './components/pages/pets/all-pets/all-pets.component';
+import { NewDogComponent } from './components/pages/forms/new-dog/new-dog.component';
 
 @NgModule({
   imports: [
@@ -43,6 +44,10 @@ import { AllPetsComponent } from './components/pages/pets/all-pets/all-pets.comp
       {
         path: 'register',
         component: RegisterComponent,
+      },
+      {
+        path: 'new-dog',
+        component: NewDogComponent,
       },
       {
         path: '',

@@ -1,13 +1,9 @@
 import { Component } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  ValidationErrors,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, ValidationErrors } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormComponent } from '../form.component';
+import { UserNamePasswordFormComponent } from '../username-password-form.component';
 
 class PasswordsDoNotMatchErrorMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl): boolean {
@@ -20,28 +16,23 @@ class PasswordsDoNotMatchErrorMatcher implements ErrorStateMatcher {
   templateUrl: './register-form.component.html',
   styleUrls: ['./register-form.component.css'],
 })
-export class RegisterFormComponent implements FormComponent {
+export class RegisterFormComponent extends UserNamePasswordFormComponent
+  implements FormComponent {
   readonly passwordsDoNotMatchErrorMatcher = new PasswordsDoNotMatchErrorMatcher();
-  readonly minUsernameLength = 5;
-  readonly minPasswordLength = 5;
   readonly signUpForm = new FormGroup({
-    username: new FormControl('', [
-      Validators.required,
-      Validators.minLength(this.minUsernameLength),
-    ]),
+    username: this.usernameFormControl,
     passwords: new FormGroup(
       {
-        password: new FormControl('', [
-          Validators.required,
-          Validators.minLength(this.minPasswordLength),
-        ]),
+        password: this.passwordFormControl,
         confirmPassword: new FormControl(),
       },
       this.passwordMatcherValidator
     ),
   });
 
-  constructor(private readonly authService: AuthService) {}
+  constructor(private readonly authService: AuthService) {
+    super();
+  }
 
   onSubmit(): void {
     this.authService

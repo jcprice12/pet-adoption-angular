@@ -1,0 +1,16 @@
+<form [formGroup]="newDogForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="formField">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" required>
+        <mat-error>
+            name is required
+        </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="formField">
+        <mat-label>Description</mat-label>
+        <input matInput formControlName="description">
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!newDogForm.valid">Add</button>
+</form>

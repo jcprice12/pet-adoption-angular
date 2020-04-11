@@ -1,5 +1,15 @@
-.title {
+.left {
+    width: 33%;
+}
+
+.center {
+    width: 34%;
     text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+}
+
+.right {
+    width: 33%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 }

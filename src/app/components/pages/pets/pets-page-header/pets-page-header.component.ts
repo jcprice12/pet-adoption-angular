@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { IconLink } from 'src/app/models/ui/icon-link.model';
 
 @Component({
   selector: 'app-pets-page-header',
@@ -7,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PetsPageHeaderComponent implements OnInit {
   @Input() title: string;
+  @Input() iconLinks: IconLink[];
 
   constructor() {}
 
