@@ -5,8 +5,7 @@ import { FormComponent } from '../form.component';
 import { UserNamePasswordFormComponent } from '../username-password-form.component';
 
 @Component({
-  templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.css'],
+  templateUrl: './login-form.component.html'
 })
 export class LoginFormComponent extends UserNamePasswordFormComponent
   implements FormComponent {

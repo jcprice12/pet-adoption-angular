@@ -9,8 +9,19 @@
     <br>
     <mat-form-field class="formField">
         <mat-label>Description</mat-label>
-        <input matInput formControlName="description">
+        <textarea matInput formControlName="description"></textarea>
     </mat-form-field>
+    <br>
+    <div class="fileUploadContainer">
+        <input class="fileInput" type="file" (change)="onFileChanged($event)" #fileInput>
+        <button type="button" (click)="fileInput.click()" class="imageButton" mat-icon-button attr.aria-label="select image" matTooltip="select image">
+            <mat-icon>attachment</mat-icon>
+        </button>
+        <mat-form-field class="imageSelected">
+            <mat-label>Image Selected</mat-label>
+            <input matInput readonly="true" formControlName="image">
+        </mat-form-field>
+    </div>
     <br>
     <button mat-raised-button color="primary" type="submit" [disabled]="!newDogForm.valid">Add</button>
 </form>

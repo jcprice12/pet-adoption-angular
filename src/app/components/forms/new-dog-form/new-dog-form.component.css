@@ -1,3 +1,13 @@
-.formField {
-    width:100%;
+.fileInput {
+    display: none;
+}
+.fileUploadContainer {
+    width: 100%;
+    display: flex;
+}
+.imageButton {
+    margin-right: 5px;
+}
+.imageSelected {
+    flex-grow: 1;
 }

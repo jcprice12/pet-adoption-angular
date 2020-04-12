@@ -12,8 +12,7 @@ class PasswordsDoNotMatchErrorMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  templateUrl: './register-form.component.html',
-  styleUrls: ['./register-form.component.css'],
+  templateUrl: './register-form.component.html'
 })
 export class RegisterFormComponent extends UserNamePasswordFormComponent
   implements FormComponent {

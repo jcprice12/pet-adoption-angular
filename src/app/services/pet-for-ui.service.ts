@@ -19,6 +19,14 @@ export abstract class PetForUIService<P extends Pet>
     return this.http.post<P>(this.getBaseUrl(), pet);
   }
 
+  public uploadPetImage(file: File): Observable<string> {
+    const formData = new FormData();
+    formData.append('image', file, file.name);
+    return this.http.put<string>(`${this.getBaseUrl()}/images`, formData, {
+      responseType: 'text' as 'json'
+    });
+  }
+
   public getPets(): Observable<P[]> {
     return this.http.get<P[]>(this.getBaseUrl());
   }
