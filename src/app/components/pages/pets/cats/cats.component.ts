@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CatService } from 'src/app/services/cat.service';
+import { CatService } from '../../../../services/cat.service';
 import { PetsComponent } from '../pets.component';
 
 @Component({

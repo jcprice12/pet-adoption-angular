@@ -1,6 +1,6 @@
-import { Component, Directive, OnInit } from '@angular/core';
-import { PetUI } from 'src/app/models/ui/pet-ui.model';
-import { GetPetsForUIService } from 'src/app/services/get-pets-for-ui.service';
+import { Directive, OnInit } from '@angular/core';
+import { PetUI } from '../../../models/ui/pet-ui.model';
+import { GetPetsForUIService } from '../../../services/get-pets-for-ui.service';
 
 @Directive()
 export abstract class PetsComponent implements OnInit {

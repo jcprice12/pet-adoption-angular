@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ValidationErrors } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from '../../../services/auth.service';
 import { FormComponent } from '../form.component';
 import { UserNamePasswordFormComponent } from '../username-password-form.component';
 

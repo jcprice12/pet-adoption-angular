@@ -17,7 +17,8 @@
     "ng:build:dev": "ng build",
     "ng:test": "ng test",
     "ng:lint": "ng lint",
-    "ng:e2e": "ng e2e"
+    "ng:e2e": "ng e2e",
+    "test:jest": "jest"
   },
   "private": true,
   "dependencies": {
@@ -47,10 +48,13 @@
     "@angular/language-service": "~12.1.4",
     "@types/jasmine": "^3.8.2",
     "@types/jasminewd2": "^2.0.10",
+    "@types/jest": "^26.0.24",
     "@types/node": "^16.4.10",
     "codelyzer": "^6.0.2",
     "jasmine-core": "^3.8.0",
     "jasmine-spec-reporter": "^7.0.0",
+    "jest": "^27.0.6",
+    "jest-preset-angular": "^9.0.5",
     "karma": "~6.3.4",
     "karma-chrome-launcher": "^3.1.0",
     "karma-coverage-istanbul-reporter": "^3.0.3",

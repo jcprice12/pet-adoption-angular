@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { DogService } from 'src/app/services/dog.service';
+import { DogService } from '../../../services/dog.service';
 import { FormComponent } from '../form.component';
 import { mergeMap } from 'rxjs/operators';
 

@@ -5,7 +5,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { FormDirective } from 'src/app/directives/form/form.directive';
+import { FormDirective } from '../../../../directives/form/form.directive';
 import { FormComponentWrapper } from '../../../../models/ui/form-component-wrapper.model';
 import { FormLink } from '../../../../models/ui/form-link.model';
 
