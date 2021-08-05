@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PetsPageComponent } from './pets-page.component';
 
@@ -6,11 +6,11 @@ describe('PetPageComponent', () => {
   let component: PetsPageComponent;
   let fixture: ComponentFixture<PetsPageComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(async() => {
     TestBed.configureTestingModule({
       declarations: [PetsPageComponent],
     }).compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PetsPageComponent);

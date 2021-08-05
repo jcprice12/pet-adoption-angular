@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PetCardComponent } from './pet-card.component';
 
@@ -6,11 +6,11 @@ describe('PetCardComponent', () => {
   let component: PetCardComponent;
   let fixture: ComponentFixture<PetCardComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(async() => {
     TestBed.configureTestingModule({
       declarations: [PetCardComponent],
     }).compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PetCardComponent);

@@ -18,7 +18,7 @@ export class FormPageComponent implements OnInit {
   @Input() readonly title: string;
   @Input() readonly formComponentWrapper: FormComponentWrapper;
   @Input() readonly formLink: FormLink;
-  @ViewChild(FormDirective, { static: true }) readonly formHost: FormDirective;
+  @ViewChild(FormDirective, { static: true }) formHost: FormDirective;
 
   constructor(
     private readonly componentFactoryResolver: ComponentFactoryResolver
