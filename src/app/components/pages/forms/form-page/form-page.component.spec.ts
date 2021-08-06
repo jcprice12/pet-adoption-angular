@@ -1,19 +1,19 @@
-import { Component, ViewContainerRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormDirective } from '../../../../directives/form/form.directive';
 import { FormComponentWrapper } from '../../../../models/ui/form-component-wrapper.model';
 import { FormLink } from '../../../../models/ui/form-link.model';
 import { FormComponent } from '../../../forms/form.component';
 import { FormPageComponent } from './form-page.component';
 
 @Component({
-  template: ''
+  template: '<p>foo</p>'
 })
 class TestFormComponent implements FormComponent {
   onSubmit(): void {}
 }
 
 @Component({
+  selector: 'test-host-component',
   template: '<app-form-page [title]="title" [formComponentWrapper]="formComponentWrapper" [formLink]="formLink"></app-form-page>'
 })
 class TestHostComponent {
@@ -36,20 +36,17 @@ describe('FormPageComponent', () => {
 
   beforeEach(async() => {
     TestBed.configureTestingModule({
-      declarations: [FormPageComponent, TestHostComponent, TestFormComponent]
-    }).compileComponents();
+      declarations: [FormPageComponent, TestHostComponent],
+    }).compileComponents()
   });
 
   beforeEach(() => {
-    componentFixture = TestBed.createComponent(FormPageComponent);
-    component = componentFixture.componentInstance;
-    component.formHost = {
-      viewContainerRef: {
-        createComponent: jest.fn()
-      } as unknown as ViewContainerRef
-    }
     testHostFixture = TestBed.createComponent(TestHostComponent);
+    componentFixture = TestBed.createComponent(FormPageComponent);
+
     testHostComponent = testHostFixture.componentInstance;
+    component = componentFixture.componentInstance;
+
     testHostFixture.detectChanges();
     componentFixture.detectChanges();
   });

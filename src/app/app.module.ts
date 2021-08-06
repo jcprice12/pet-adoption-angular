@@ -35,6 +35,7 @@ import { PetCardComponent } from './components/pet-card/pet-card.component';
 import { PetsGridComponent } from './components/pets-grid/pets-grid.component';
 import { FormDirective } from './directives/form/form.directive';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { DynamicFormComponent } from './components/forms/dynamic-form/dynamic-form.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     NewDogComponent,
     NewDogFormComponent,
     IconLinkComponent,
+    DynamicFormComponent,
   ],
   imports: [
     BrowserModule,
