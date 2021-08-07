@@ -13,7 +13,7 @@ class TestFormComponent implements FormComponent {
 }
 
 @Component({
-  selector: 'test-host-component',
+  selector: 'app-test-host-component',
   template:
     '<app-form-page [title]="title" [formComponentWrapper]="formComponentWrapper" [formLink]="formLink"></app-form-page>',
 })

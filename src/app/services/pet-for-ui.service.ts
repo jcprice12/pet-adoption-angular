@@ -9,15 +9,15 @@ import { NewPetService } from './new-pet.service';
 
 export abstract class PetForUIService<P extends Pet>
   implements GetPetsForUIService, NewPetService<P> {
+  private counter = 0;
   protected abstract getBaseUrl(): string;
   protected abstract getPetType(): PetType;
   protected abstract mapPetSubTypes(p: P): string[];
-  private counter = 0;
 
   constructor(private readonly http: HttpClient) {}
 
   public addNewPet(pet: Partial<P>): Observable<P> {
-    //return this.http.post<P>(this.getBaseUrl(), pet);
+    // return this.http.post<P>(this.getBaseUrl(), pet);
     this.counter++;
     return of(({
       id: this.counter,
@@ -45,7 +45,7 @@ export abstract class PetForUIService<P extends Pet>
   }
 
   public getPets(): Observable<P[]> {
-    //return this.http.get<P[]>(this.getBaseUrl());
+    // return this.http.get<P[]>(this.getBaseUrl());
     return of([
       ({
         id: this.counter,

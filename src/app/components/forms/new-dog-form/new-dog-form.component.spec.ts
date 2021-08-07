@@ -14,13 +14,15 @@ describe('NewDogFormComponent', () => {
     addNewPetMock = jest.fn();
     TestBed.configureTestingModule({
       declarations: [NewDogFormComponent],
-      providers: [{
-        provide: DogService,
-        useValue: {
-          uploadPetImage: uploadPetImageMock,
-          addNewPet: addNewPetMock
-        }
-      }]
+      providers: [
+        {
+          provide: DogService,
+          useValue: {
+            uploadPetImage: uploadPetImageMock,
+            addNewPet: addNewPetMock,
+          },
+        },
+      ],
     }).compileComponents();
   });
 

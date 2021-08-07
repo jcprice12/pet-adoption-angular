@@ -9,20 +9,20 @@ describe('CatsComponent', () => {
   let component: CatsComponent;
   let fixture: ComponentFixture<CatsComponent>;
   let getPetsForUIMock: jest.Mock;
-  let cats: PetUI[]
+  let cats: PetUI[];
 
   beforeEach(async () => {
-    getPetsForUIMock = jest.fn()
+    getPetsForUIMock = jest.fn();
     TestBed.configureTestingModule({
       declarations: [CatsComponent],
       providers: [
         {
           provide: CatService,
           useValue: {
-            getPetsForUI: getPetsForUIMock
-          }
-        }
-      ]
+            getPetsForUI: getPetsForUIMock,
+          },
+        },
+      ],
     }).compileComponents();
   });
 
@@ -30,7 +30,7 @@ describe('CatsComponent', () => {
     fixture = TestBed.createComponent(CatsComponent);
 
     cats = [];
-    getPetsForUIMock.mockReturnValue(of(cats))
+    getPetsForUIMock.mockReturnValue(of(cats));
 
     component = fixture.componentInstance;
     fixture.detectChanges();

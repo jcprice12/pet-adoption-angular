@@ -4,7 +4,6 @@ import { PetUI } from '../../../../models/ui/pet-ui.model';
 import { FishService } from '../../../../services/fish.service';
 import { FishComponent } from './fish.component';
 
-
 describe('FishComponent', () => {
   let component: FishComponent;
   let fixture: ComponentFixture<FishComponent>;
@@ -15,12 +14,14 @@ describe('FishComponent', () => {
     getPetsForUIMock = jest.fn();
     TestBed.configureTestingModule({
       declarations: [FishComponent],
-      providers: [{
-        provide: FishService,
-        useValue: {
-          getPetsForUI: getPetsForUIMock
-        }
-      }]
+      providers: [
+        {
+          provide: FishService,
+          useValue: {
+            getPetsForUI: getPetsForUIMock,
+          },
+        },
+      ],
     }).compileComponents();
   });
 
@@ -28,7 +29,7 @@ describe('FishComponent', () => {
     fixture = TestBed.createComponent(FishComponent);
 
     fish = [];
-    getPetsForUIMock.mockReturnValue(of(fish))
+    getPetsForUIMock.mockReturnValue(of(fish));
 
     component = fixture.componentInstance;
     fixture.detectChanges();

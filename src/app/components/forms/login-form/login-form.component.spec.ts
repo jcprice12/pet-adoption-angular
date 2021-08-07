@@ -10,16 +10,18 @@ describe('LoginFormComponent', () => {
   let loginMock: jest.Mock;
 
   beforeEach(async () => {
-    loginMock = jest.fn()
+    loginMock = jest.fn();
     TestBed.configureTestingModule({
       declarations: [LoginFormComponent],
-      providers: [{
-        provide: AuthService,
-        useValue: {
-          login: loginMock
-        }
-      }],
-      schemas: [NO_ERRORS_SCHEMA]//hack, see https://angular.io/guide/testing-components-scenarios#nested-component-tests
+      providers: [
+        {
+          provide: AuthService,
+          useValue: {
+            login: loginMock,
+          },
+        },
+      ],
+      schemas: [NO_ERRORS_SCHEMA], // hack, see https://angular.io/guide/testing-components-scenarios#nested-component-tests
     }).compileComponents();
   });
 

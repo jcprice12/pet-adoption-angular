@@ -15,12 +15,14 @@ describe('DogsComponent', () => {
     getPetsForUIMock = jest.fn();
     TestBed.configureTestingModule({
       declarations: [DogsComponent],
-      providers: [{
-        provide: DogService,
-        useValue: {
-          getPetsForUI: getPetsForUIMock
-        }
-      }]
+      providers: [
+        {
+          provide: DogService,
+          useValue: {
+            getPetsForUI: getPetsForUIMock,
+          },
+        },
+      ],
     }).compileComponents();
   });
 
@@ -28,8 +30,8 @@ describe('DogsComponent', () => {
     fixture = TestBed.createComponent(DogsComponent);
 
     dogs = [];
-    getPetsForUIMock.mockReturnValue(of(dogs))
-    
+    getPetsForUIMock.mockReturnValue(of(dogs));
+
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
