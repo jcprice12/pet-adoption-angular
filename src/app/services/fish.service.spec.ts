@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { FishService } from './fish.service';
 
-
 describe('FishService', () => {
   let service: FishService;
   let getMock: jest.Mock;
@@ -17,10 +16,10 @@ describe('FishService', () => {
           provide: HttpClient,
           useValue: {
             get: getMock,
-            post: postMock
-          }
-        }
-      ]  
+            post: postMock,
+          },
+        },
+      ],
     });
     service = TestBed.inject(FishService);
   });

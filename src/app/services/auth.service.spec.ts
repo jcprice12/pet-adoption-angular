@@ -3,7 +3,6 @@ import { TestBed } from '@angular/core/testing';
 import { AuthService } from './auth.service';
 import { TokenService } from './token.service';
 
-
 describe('AuthService', () => {
   let service: AuthService;
   let postRequestMock: jest.Mock;
@@ -17,16 +16,16 @@ describe('AuthService', () => {
         {
           provide: HttpClient,
           useValue: {
-            post: postRequestMock
-          }
+            post: postRequestMock,
+          },
         },
         {
           provide: TokenService,
           useValue: {
-            setToken: setTokenMock
-          }
-        }
-      ]
+            setToken: setTokenMock,
+          },
+        },
+      ],
     });
     service = TestBed.inject(AuthService);
   });

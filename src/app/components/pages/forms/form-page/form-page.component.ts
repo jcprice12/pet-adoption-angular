@@ -1,8 +1,4 @@
-import {
-  Component,
-  Input,
-  OnInit,
-} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormComponentWrapper } from '../../../../models/ui/form-component-wrapper.model';
 import { FormLink } from '../../../../models/ui/form-link.model';
 
@@ -18,6 +14,5 @@ export class FormPageComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 }

@@ -4,7 +4,6 @@ import { CatService } from './cat.service';
 import { DogService } from './dog.service';
 import { FishService } from './fish.service';
 
-
 describe('AllPetsForUIService', () => {
   let service: AllPetsForUIService;
   let getDogsForUiMock: jest.Mock;
@@ -21,22 +20,22 @@ describe('AllPetsForUIService', () => {
         {
           provide: DogService,
           useValue: {
-            getPetsForUi: getDogsForUiMock
-          }
+            getPetsForUi: getDogsForUiMock,
+          },
         },
         {
           provide: CatService,
           useValue: {
-            getPetsForUi: getCatsForUiMock
-          }
+            getPetsForUi: getCatsForUiMock,
+          },
         },
         {
           provide: FishService,
           useValue: {
-            getPetsForUi: getFishForUiMock
-          }
-        }
-      ]
+            getPetsForUi: getFishForUiMock,
+          },
+        },
+      ],
     });
     service = TestBed.inject(AllPetsForUIService);
   });

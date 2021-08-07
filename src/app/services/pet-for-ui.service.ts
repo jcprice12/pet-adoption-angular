@@ -18,20 +18,19 @@ export abstract class PetForUIService<P extends Pet>
 
   public addNewPet(pet: Partial<P>): Observable<P> {
     //return this.http.post<P>(this.getBaseUrl(), pet);
-    this.counter++
-    return of({
+    this.counter++;
+    return of(({
       id: this.counter,
       name: 'scooter',
       description: 'a good boy',
-      image: 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F47%2F2021%2F03%2F02%2Fborder-collie-green-field-268313239-2000.jpeg',
+      image:
+        'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F47%2F2021%2F03%2F02%2Fborder-collie-green-field-268313239-2000.jpeg',
       species: {
         id: 1,
-        commonName: 'Fish'
+        commonName: 'Fish',
       },
-      breeds: [
-        {id: 1, name: 'border collie'}
-      ]
-    } as unknown as P)
+      breeds: [{ id: 1, name: 'border collie' }],
+    } as unknown) as P);
   }
 
   public uploadPetImage(file: File): Observable<string> {
@@ -40,26 +39,27 @@ export abstract class PetForUIService<P extends Pet>
     // return this.http.put<string>(`${this.getBaseUrl()}/images`, formData, {
     //   responseType: 'text' as 'json'
     // });
-    return of('https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F47%2F2021%2F03%2F02%2Fborder-collie-green-field-268313239-2000.jpeg')
+    return of(
+      'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F47%2F2021%2F03%2F02%2Fborder-collie-green-field-268313239-2000.jpeg'
+    );
   }
 
   public getPets(): Observable<P[]> {
     //return this.http.get<P[]>(this.getBaseUrl());
     return of([
-      {
+      ({
         id: this.counter,
         name: 'scooter',
         description: 'a good boy',
-        image: 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F47%2F2021%2F03%2F02%2Fborder-collie-green-field-268313239-2000.jpeg',
-        breeds: [
-          {id: 1, name: 'border collie'}
-        ],
+        image:
+          'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F47%2F2021%2F03%2F02%2Fborder-collie-green-field-268313239-2000.jpeg',
+        breeds: [{ id: 1, name: 'border collie' }],
         species: {
           id: 1,
-          commonName: 'Fish'
-        }
-      } as unknown as P
-    ])
+          commonName: 'Fish',
+        },
+      } as unknown) as P,
+    ]);
   }
 
   public getPetsForUI(): Observable<PetUI[]> {

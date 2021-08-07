@@ -6,7 +6,7 @@ describe('PetsGridComponent', () => {
   let component: PetsGridComponent;
   let fixture: ComponentFixture<PetsGridComponent>;
 
-  beforeEach(async() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [PetsGridComponent],
     }).compileComponents();

@@ -1,11 +1,17 @@
-import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ComponentFactoryResolver,
+  Input,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { FormDirective } from '../../../directives/form/form.directive';
 import { FormComponentWrapper } from '../../../models/ui/form-component-wrapper.model';
 
 @Component({
   selector: 'app-dynamic-form',
   templateUrl: './dynamic-form.component.html',
-  styleUrls: ['./dynamic-form.component.scss']
+  styleUrls: ['./dynamic-form.component.scss'],
 })
 export class DynamicFormComponent implements OnInit {
   @Input() readonly formComponentWrapper: FormComponentWrapper;
@@ -25,5 +31,4 @@ export class DynamicFormComponent implements OnInit {
     );
     this.formHost.viewContainerRef.createComponent(componentFactory);
   }
-
 }

@@ -17,10 +17,10 @@ describe('CatService', () => {
           provide: HttpClient,
           useValue: {
             get: getMock,
-            post: postMock
-          }
-        }
-      ]  
+            post: postMock,
+          },
+        },
+      ],
     });
     service = TestBed.inject(CatService);
   });

@@ -6,7 +6,7 @@ import { FormComponent } from '../../../forms/form.component';
 import { FormPageComponent } from './form-page.component';
 
 @Component({
-  template: '<p>foo</p>'
+  template: '<p>foo</p>',
 })
 class TestFormComponent implements FormComponent {
   onSubmit(): void {}
@@ -14,12 +14,13 @@ class TestFormComponent implements FormComponent {
 
 @Component({
   selector: 'test-host-component',
-  template: '<app-form-page [title]="title" [formComponentWrapper]="formComponentWrapper" [formLink]="formLink"></app-form-page>'
+  template:
+    '<app-form-page [title]="title" [formComponentWrapper]="formComponentWrapper" [formLink]="formLink"></app-form-page>',
 })
 class TestHostComponent {
   title = 'MyTitle';
   formComponentWrapper: FormComponentWrapper = {
-    formComponent: TestFormComponent
+    formComponent: TestFormComponent,
   };
   formLink: FormLink = {
     ariaLabel: 'link',
@@ -34,10 +35,10 @@ describe('FormPageComponent', () => {
   let component: FormPageComponent;
   let componentFixture: ComponentFixture<FormPageComponent>;
 
-  beforeEach(async() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [FormPageComponent, TestHostComponent],
-    }).compileComponents()
+    }).compileComponents();
   });
 
   beforeEach(() => {
