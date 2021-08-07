@@ -23,7 +23,12 @@ describe('RegisterFormComponent', () => {
           },
         },
       ],
-      imports: [MatFormFieldModule, MatInputModule, BrowserAnimationsModule, ReactiveFormsModule]// as opposed to using NO_ERRORS_SCHEMA
+      imports: [
+        MatFormFieldModule,
+        MatInputModule,
+        BrowserAnimationsModule,
+        ReactiveFormsModule,
+      ], // as opposed to using NO_ERRORS_SCHEMA
     }).compileComponents();
   });
 

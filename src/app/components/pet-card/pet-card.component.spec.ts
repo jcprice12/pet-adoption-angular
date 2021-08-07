@@ -12,7 +12,7 @@ describe('PetCardComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [PetCardComponent],
-      imports: [MatCardModule]
+      imports: [MatCardModule],
     }).compileComponents();
   });
 
