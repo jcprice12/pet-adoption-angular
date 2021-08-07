@@ -9,7 +9,6 @@
   },
   "main": "server.js",
   "scripts": {
-    "postinstall": "ng build --configuration production",
     "format": "prettier --write src/**/*.ts",
     "start": "node server.js",
     "start:dev": "npm run ng:build:dev && node server.js",
@@ -18,7 +17,9 @@
     "ng:test": "ng test",
     "ng:lint": "ng lint",
     "ng:e2e": "ng e2e",
-    "test:jest": "jest"
+    "test:jest": "jest",
+    "cy:open": "concurrently \"ng serve\" \"cypress open\"",
+    "cy:run": "concurrently \"ng serve\" \"cypress run\""
   },
   "private": true,
   "dependencies": {
@@ -52,6 +53,8 @@
     "@types/jest": "^26.0.24",
     "@types/node": "^16.4.10",
     "codelyzer": "^6.0.2",
+    "concurrently": "^6.2.0",
+    "cypress": "^8.2.0",
     "jasmine-core": "^3.8.0",
     "jasmine-spec-reporter": "^7.0.0",
     "jest": "^27.0.6",
@@ -59,5 +62,12 @@
     "prettier": "1.19.1",
     "protractor": "~7.0.0",
     "ts-node": "^10.1.0"
-  }
+  },
+  "browserslist": [
+		"> 0.5%",
+		"last 2 versions",
+		"Firefox ESR",
+		"not dead",
+		"not IE 9-11"
+	]
 }
