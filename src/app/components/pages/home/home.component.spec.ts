@@ -10,7 +10,7 @@ describe('HomeComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [HomeComponent],
-      schemas: [NO_ERRORS_SCHEMA], // hack, see https://angular.io/guide/testing-components-scenarios#nested-component-tests
+      schemas: [NO_ERRORS_SCHEMA], // see https://angular.io/guide/testing-components-scenarios#nested-component-tests
     }).compileComponents();
   });
 

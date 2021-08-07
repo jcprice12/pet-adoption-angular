@@ -1,4 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthService } from '../../../services/auth.service';
 import { RegisterFormComponent } from './register-form.component';
 
@@ -19,6 +23,7 @@ describe('RegisterFormComponent', () => {
           },
         },
       ],
+      imports: [MatFormFieldModule, MatInputModule, BrowserAnimationsModule, ReactiveFormsModule]// as opposed to using NO_ERRORS_SCHEMA
     }).compileComponents();
   });
 

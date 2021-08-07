@@ -1,3 +1,4 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormComponentWrapper } from '../../../../models/ui/form-component-wrapper.model';
@@ -38,6 +39,7 @@ describe('FormPageComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [FormPageComponent, TestHostComponent],
+      schemas: [NO_ERRORS_SCHEMA], // see https://angular.io/guide/testing-components-scenarios#nested-component-tests
     }).compileComponents();
   });
 

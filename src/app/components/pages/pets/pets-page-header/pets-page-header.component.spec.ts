@@ -10,7 +10,7 @@ describe('PetPageHeaderComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [PetsPageHeaderComponent],
-      schemas: [NO_ERRORS_SCHEMA], // hack, see https://angular.io/guide/testing-components-scenarios#nested-component-tests
+      schemas: [NO_ERRORS_SCHEMA], // see https://angular.io/guide/testing-components-scenarios#nested-component-tests
     }).compileComponents();
   });
 

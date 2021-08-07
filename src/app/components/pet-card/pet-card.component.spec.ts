@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatCardModule } from '@angular/material/card';
 import { CreateMutable } from '../../../../testing';
 import { PetType } from '../../models/ui/pet-type.enum';
 
@@ -11,6 +12,7 @@ describe('PetCardComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [PetCardComponent],
+      imports: [MatCardModule]
     }).compileComponents();
   });
 
