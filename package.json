@@ -18,8 +18,10 @@
     "ng:lint": "ng lint",
     "ng:e2e": "ng e2e",
     "test:jest": "jest",
-    "cy:open": "concurrently \"ng serve\" \"cypress open\"",
-    "cy:run": "concurrently \"ng serve\" \"cypress run\""
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "cypress:open:con": "concurrently \"ng serve\" \"cypress open\"",
+    "cypress:run:con": "concurrently \"ng serve\" \"cypress run\""
   },
   "private": true,
   "dependencies": {
@@ -48,6 +50,7 @@
   "devDependencies": {
     "@angular-builders/jest": "^12.1.0",
     "@angular/language-service": "~12.1.4",
+    "@cypress/schematic": "^1.5.0",
     "@types/jasmine": "^3.8.2",
     "@types/jasminewd2": "^2.0.10",
     "@types/jest": "^26.0.24",
@@ -64,10 +67,10 @@
     "ts-node": "^10.1.0"
   },
   "browserslist": [
-		"> 0.5%",
-		"last 2 versions",
-		"Firefox ESR",
-		"not dead",
-		"not IE 9-11"
-	]
+    "> 0.5%",
+    "last 2 versions",
+    "Firefox ESR",
+    "not dead",
+    "not IE 9-11"
+  ]
 }
