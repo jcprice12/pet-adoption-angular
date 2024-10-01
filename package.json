@@ -4,8 +4,8 @@
   "author": "jcprice12",
   "description": "front-end to interact with https://github.com/jcprice12/pet-adoption",
   "engines": {
-    "node": "14.x",
-    "npm": "7.x"
+    "node": "20.x",
+    "npm": "10.x"
   },
   "main": "server.js",
   "scripts": {
