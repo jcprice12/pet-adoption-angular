@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { MatCardModule } from '@angular/material/card';
+import { PetCardComponent } from '../pet-card/pet-card.component';
 import { PetsGridComponent } from './pets-grid.component';
 
 describe('PetsGridComponent', () => {
@@ -8,7 +10,8 @@ describe('PetsGridComponent', () => {
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      declarations: [PetsGridComponent],
+      declarations: [PetsGridComponent, PetCardComponent],
+      imports: [MatCardModule],
     }).compileComponents();
   });
 

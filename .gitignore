@@ -49,3 +49,7 @@ Thumbs.db
 # cypress
 cypress/videos
 cypress/screenshots
+cypress/downloads
+
+# angular
+.angular/

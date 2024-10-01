@@ -1,6 +1,6 @@
 import { Directive, OnInit } from '@angular/core';
-import { PetUI } from '../../../models/ui/pet-ui.model';
-import { GetPetsForUIService } from '../../../services/get-pets-for-ui.service';
+import { PetUI } from '../../models/ui/pet-ui.model';
+import { GetPetsForUIService } from '../../services/get-pets-for-ui.service';
 
 /**
  * Not actually a real component or directive
@@ -10,7 +10,7 @@ import { GetPetsForUIService } from '../../../services/get-pets-for-ui.service';
  *  - make this class an interface instead that simply defines pets: PetUI[] and have implmenting classes instantiate it
  */
 @Directive()
-export abstract class PetsComponent implements OnInit {
+export abstract class PetsDirective implements OnInit {
   pets: PetUI[];
 
   constructor(private readonly getPetsForUIService: GetPetsForUIService) {}
