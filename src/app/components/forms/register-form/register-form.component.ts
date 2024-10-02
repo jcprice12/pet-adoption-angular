@@ -1,12 +1,16 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ValidationErrors } from '@angular/forms';
+import {
+  UntypedFormControl,
+  UntypedFormGroup,
+  ValidationErrors,
+} from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { AuthService } from '../../../services/auth.service';
 import { FormComponent } from '../form.component';
 import { UserNamePasswordFormComponent } from '../username-password-form.component';
 
 class PasswordsDoNotMatchErrorMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl): boolean {
+  isErrorState(control: UntypedFormControl): boolean {
     return control.parent.hasError('passwordsDoNotMatch') && control.touched;
   }
 }
@@ -17,12 +21,12 @@ class PasswordsDoNotMatchErrorMatcher implements ErrorStateMatcher {
 export class RegisterFormComponent extends UserNamePasswordFormComponent
   implements FormComponent {
   readonly passwordsDoNotMatchErrorMatcher = new PasswordsDoNotMatchErrorMatcher();
-  readonly signUpForm = new FormGroup({
+  readonly signUpForm = new UntypedFormGroup({
     username: this.usernameFormControl,
-    passwords: new FormGroup(
+    passwords: new UntypedFormGroup(
       {
         password: this.passwordFormControl,
-        confirmPassword: new FormControl(),
+        confirmPassword: new UntypedFormControl(),
       },
       this.passwordMatcherValidator
     ),
@@ -42,7 +46,7 @@ export class RegisterFormComponent extends UserNamePasswordFormComponent
   }
 
   passwordMatcherValidator(
-    passwordsFormGroup: FormGroup
+    passwordsFormGroup: UntypedFormGroup
   ): ValidationErrors | null {
     return passwordsFormGroup.value.password ===
       passwordsFormGroup.value.confirmPassword

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 import { FormComponent } from '../form.component';
 import { UserNamePasswordFormComponent } from '../username-password-form.component';
@@ -9,7 +9,7 @@ import { UserNamePasswordFormComponent } from '../username-password-form.compone
 })
 export class LoginFormComponent extends UserNamePasswordFormComponent
   implements FormComponent {
-  readonly loginForm = new FormGroup({
+  readonly loginForm = new UntypedFormGroup({
     username: this.usernameFormControl,
     password: this.passwordFormControl,
   });

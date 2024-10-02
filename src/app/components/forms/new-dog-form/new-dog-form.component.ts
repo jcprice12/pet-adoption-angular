@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  UntypedFormControl,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 import { DogService } from '../../../services/dog.service';
 import { FormComponent } from '../form.component';
 import { mergeMap } from 'rxjs/operators';
@@ -10,10 +14,10 @@ import { mergeMap } from 'rxjs/operators';
 })
 export class NewDogFormComponent implements FormComponent {
   private selectedFile: File;
-  readonly newDogForm = new FormGroup({
-    name: new FormControl('', [Validators.required]),
-    description: new FormControl(''),
-    image: new FormControl(''),
+  readonly newDogForm = new UntypedFormGroup({
+    name: new UntypedFormControl('', [Validators.required]),
+    description: new UntypedFormControl(''),
+    image: new UntypedFormControl(''),
   });
 
   constructor(private readonly dogService: DogService) {}

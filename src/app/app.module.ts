@@ -86,6 +86,5 @@ import { DynamicFormComponent } from './components/forms/dynamic-form/dynamic-fo
     },
   ],
   bootstrap: [AppComponent],
-  entryComponents: [LoginFormComponent, RegisterFormComponent],
 })
 export class AppModule {}
