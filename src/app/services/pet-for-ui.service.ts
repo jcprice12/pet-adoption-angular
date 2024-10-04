@@ -24,7 +24,7 @@ export abstract class PetForUIService<P extends Pet>
       name: 'scooter',
       description: 'a good boy',
       image:
-        'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F47%2F2021%2F03%2F02%2Fborder-collie-green-field-268313239-2000.jpeg',
+        'https://media-be.chewy.com/wp-content/uploads/2021/04/15160416/Border-Collie_Featured-Image-1024x615.jpg',
       species: {
         id: 1,
         commonName: 'Fish',
@@ -40,7 +40,7 @@ export abstract class PetForUIService<P extends Pet>
     //   responseType: 'text' as 'json'
     // });
     return of(
-      'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F47%2F2021%2F03%2F02%2Fborder-collie-green-field-268313239-2000.jpeg'
+      'https://media-be.chewy.com/wp-content/uploads/2021/04/15160416/Border-Collie_Featured-Image-1024x615.jpg'
     );
   }
 
@@ -52,7 +52,7 @@ export abstract class PetForUIService<P extends Pet>
         name: 'scooter',
         description: 'a good boy',
         image:
-          'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F47%2F2021%2F03%2F02%2Fborder-collie-green-field-268313239-2000.jpeg',
+          'https://media-be.chewy.com/wp-content/uploads/2021/04/15160416/Border-Collie_Featured-Image-1024x615.jpg',
         breeds: [{ id: 1, name: 'border collie' }],
         species: {
           id: 1,

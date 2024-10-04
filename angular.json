@@ -66,19 +66,19 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "pet-adoption-angular:build",
-            "proxyConfig": "src/proxy.conf.js"
+            "proxyConfig": "src/proxy.conf.js",
+            "buildTarget": "pet-adoption-angular:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "pet-adoption-angular:build:production"
+              "buildTarget": "pet-adoption-angular:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "pet-adoption-angular:build"
+            "buildTarget": "pet-adoption-angular:build"
           }
         },
         "test": {
