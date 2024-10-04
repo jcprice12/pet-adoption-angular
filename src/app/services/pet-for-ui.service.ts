@@ -16,7 +16,7 @@ export abstract class PetForUIService<P extends Pet>
 
   constructor(private readonly http: HttpClient) {}
 
-  public addNewPet(pet: Partial<P>): Observable<P> {
+  public addNewPet(_pet: Partial<P>): Observable<P> {
     // return this.http.post<P>(this.getBaseUrl(), pet);
     this.counter++;
     return of(({
@@ -33,7 +33,7 @@ export abstract class PetForUIService<P extends Pet>
     } as unknown) as P);
   }
 
-  public uploadPetImage(file: File): Observable<string> {
+  public uploadPetImage(_file: File): Observable<string> {
     // const formData = new FormData();
     // formData.append('image', file, file.name);
     // return this.http.put<string>(`${this.getBaseUrl()}/images`, formData, {

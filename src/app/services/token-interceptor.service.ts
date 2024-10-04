@@ -13,9 +13,9 @@ export class TokenInterceptorService implements HttpInterceptor {
   constructor(private readonly tokenService: TokenService) {}
 
   intercept(
-    req: HttpRequest<any>,
+    req: HttpRequest<unknown>,
     next: HttpHandler
-  ): Observable<HttpEvent<any>> {
+  ): Observable<HttpEvent<unknown>> {
     let newHeaders = req.headers;
     if (this.tokenService.getToken() && this.isStateChangeMethod(req.method)) {
       newHeaders = newHeaders.append(

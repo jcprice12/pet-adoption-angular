@@ -12,7 +12,7 @@ export class FormPageComponent implements OnInit {
   @Input() readonly formComponentWrapper: FormComponentWrapper;
   @Input() readonly formLink: FormLink;
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    return
+  }
 }

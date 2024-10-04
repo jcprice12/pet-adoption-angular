@@ -10,7 +10,9 @@ import { FormPageComponent } from './form-page.component';
   template: '<p>foo</p>',
 })
 class TestFormComponent implements FormComponent {
-  onSubmit(): void {}
+  onSubmit(): void {
+    return
+  }
 }
 
 @Component({
@@ -32,7 +34,6 @@ class TestHostComponent {
 
 describe('FormPageComponent', () => {
   let testHostFixture: ComponentFixture<TestHostComponent>;
-  let testHostComponent: TestHostComponent;
   let component: FormPageComponent;
   let componentFixture: ComponentFixture<FormPageComponent>;
 
@@ -47,7 +48,6 @@ describe('FormPageComponent', () => {
     testHostFixture = TestBed.createComponent(TestHostComponent);
     componentFixture = TestBed.createComponent(FormPageComponent);
 
-    testHostComponent = testHostFixture.componentInstance;
     component = componentFixture.componentInstance;
 
     testHostFixture.detectChanges();
