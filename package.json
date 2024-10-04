@@ -61,12 +61,5 @@
     "prettier": "1.19.1",
     "ts-node": "^10.1.0",
     "typescript-eslint": "8.2.0"
-  },
-  "browserslist": [
-    "> 0.5%",
-    "last 2 versions",
-    "Firefox ESR",
-    "not dead",
-    "not IE 9-11"
-  ]
+  }
 }
