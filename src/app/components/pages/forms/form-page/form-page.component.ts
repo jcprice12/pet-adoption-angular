@@ -13,6 +13,6 @@ export class FormPageComponent implements OnInit {
   @Input() readonly formLink: FormLink;
 
   ngOnInit(): void {
-    return
+    return;
   }
 }

@@ -23,7 +23,7 @@ export class NewDogFormComponent implements FormComponent {
   constructor(private readonly dogService: DogService) {}
 
   onFileChanged(event: Event): void {
-    const input = event.target as HTMLInputElement
+    const input = event.target as HTMLInputElement;
     const file: File = input.files[0];
     if (file) {
       this.selectedFile = file;

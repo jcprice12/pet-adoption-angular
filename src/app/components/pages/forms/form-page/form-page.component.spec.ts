@@ -11,7 +11,7 @@ import { FormPageComponent } from './form-page.component';
 })
 class TestFormComponent implements FormComponent {
   onSubmit(): void {
-    return
+    return;
   }
 }
 
