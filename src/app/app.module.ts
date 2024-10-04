@@ -1,4 +1,8 @@
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -62,11 +66,11 @@ import { DynamicFormComponent } from './components/forms/dynamic-form/dynamic-fo
     IconLinkComponent,
     DynamicFormComponent,
   ],
+  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule,
     ReactiveFormsModule,
     MatButtonModule,
     MatCardModule,
@@ -84,7 +88,7 @@ import { DynamicFormComponent } from './components/forms/dynamic-form/dynamic-fo
       useClass: TokenInterceptorService,
       multi: true,
     },
+    provideHttpClient(withInterceptorsFromDi()),
   ],
-  bootstrap: [AppComponent],
 })
 export class AppModule {}
