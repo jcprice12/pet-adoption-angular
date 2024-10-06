@@ -16,7 +16,7 @@ export abstract class PetsDirective implements OnInit {
   constructor(private readonly getPetsForUIService: GetPetsForUIService) {}
 
   ngOnInit(): void {
-    this.getPetsForUIService.getPetsForUI().subscribe(pets => {
+    this.getPetsForUIService.getPetsForUI().subscribe((pets) => {
       this.pets = pets;
     });
   }

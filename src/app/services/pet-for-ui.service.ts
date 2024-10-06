@@ -8,7 +8,8 @@ import { GetPetsForUIService } from './get-pets-for-ui.service';
 import { NewPetService } from './new-pet.service';
 
 export abstract class PetForUIService<P extends Pet>
-  implements GetPetsForUIService, NewPetService<P> {
+  implements GetPetsForUIService, NewPetService<P>
+{
   protected abstract getBaseUrl(): string;
   protected abstract getPetType(): PetType;
   protected abstract mapPetSubTypes(p: P): string[];
@@ -34,7 +35,7 @@ export abstract class PetForUIService<P extends Pet>
   public getPetsForUI(): Observable<PetUI[]> {
     return this.getPets().pipe(
       map((pets: P[]) =>
-        pets.map(pet => {
+        pets.map((pet) => {
           return {
             id: pet.id,
             name: pet.name,

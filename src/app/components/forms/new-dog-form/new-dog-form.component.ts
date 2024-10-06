@@ -35,7 +35,7 @@ export class NewDogFormComponent implements FormComponent {
     this.dogService
       .uploadPetImage(this.selectedFile)
       .pipe(
-        mergeMap(imageUrl => {
+        mergeMap((imageUrl) => {
           const formVal = this.newDogForm.value;
           return this.dogService.addNewPet({
             name: formVal.name,

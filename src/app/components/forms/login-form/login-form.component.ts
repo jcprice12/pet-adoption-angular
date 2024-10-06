@@ -7,8 +7,10 @@ import { UserNamePasswordFormComponent } from '../username-password-form.compone
 @Component({
   templateUrl: './login-form.component.html',
 })
-export class LoginFormComponent extends UserNamePasswordFormComponent
-  implements FormComponent {
+export class LoginFormComponent
+  extends UserNamePasswordFormComponent
+  implements FormComponent
+{
   readonly loginForm = new UntypedFormGroup({
     username: this.usernameFormControl,
     password: this.passwordFormControl,

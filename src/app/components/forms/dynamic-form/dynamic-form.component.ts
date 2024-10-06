@@ -26,9 +26,10 @@ export class DynamicFormComponent implements OnInit {
   }
 
   loadFormComponent(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-      this.formComponentWrapper.formComponent
-    );
+    const componentFactory =
+      this.componentFactoryResolver.resolveComponentFactory(
+        this.formComponentWrapper.formComponent
+      );
     this.formHost.viewContainerRef.createComponent(componentFactory);
   }
 }

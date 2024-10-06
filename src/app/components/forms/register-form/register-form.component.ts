@@ -18,9 +18,12 @@ class PasswordsDoNotMatchErrorMatcher implements ErrorStateMatcher {
 @Component({
   templateUrl: './register-form.component.html',
 })
-export class RegisterFormComponent extends UserNamePasswordFormComponent
-  implements FormComponent {
-  readonly passwordsDoNotMatchErrorMatcher = new PasswordsDoNotMatchErrorMatcher();
+export class RegisterFormComponent
+  extends UserNamePasswordFormComponent
+  implements FormComponent
+{
+  readonly passwordsDoNotMatchErrorMatcher =
+    new PasswordsDoNotMatchErrorMatcher();
   readonly signUpForm = new UntypedFormGroup({
     username: this.usernameFormControl,
     passwords: new UntypedFormGroup(
