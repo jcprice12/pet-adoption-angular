@@ -23,7 +23,7 @@ export class AllPetsForUIService implements GetPetsForUIService {
       this.catService.getPetsForUI(),
       this.fishService.getPetsForUI(),
     ]).pipe(
-      map(forkJoinResults =>
+      map((forkJoinResults) =>
         forkJoinResults.reduce(
           (flattenedList, subList) => flattenedList.concat(subList),
           []

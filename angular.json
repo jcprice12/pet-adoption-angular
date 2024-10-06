@@ -7,7 +7,7 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "styleext": "scss"
+          "style": "scss"
         }
       },
       "root": "",
@@ -15,12 +15,15 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular/build:application",
           "options": {
-            "outputPath": "dist/pet-adoption-angular",
+            "outputPath": {
+              "base": "dist/pet-adoption-angular"
+            },
             "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": [
+              "src/polyfills.ts"
+            ],
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
@@ -31,7 +34,8 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "browser": "src/main.ts"
           },
           "configurations": {
             "production": {
@@ -44,11 +48,8 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -65,58 +66,43 @@
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular/build:dev-server",
           "options": {
-            "browserTarget": "pet-adoption-angular:build",
-            "proxyConfig": "src/proxy.conf.js"
+            "proxyConfig": "src/proxy.conf.js",
+            "buildTarget": "pet-adoption-angular:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "pet-adoption-angular:build:production"
+              "buildTarget": "pet-adoption-angular:build:production"
             }
           }
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "builder": "@angular/build:extract-i18n",
           "options": {
-            "browserTarget": "pet-adoption-angular:build"
+            "buildTarget": "pet-adoption-angular:build"
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.scss"
-            ],
-            "scripts": []
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
+          "builder": "@angular-builders/jest:run",
+          "options": {}
         },
         "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
+          "builder": "@cypress/schematic:cypress",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "pet-adoption-angular:serve",
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "pet-adoption-angular:serve:production"
+            }
+          }
+        },
+        "cypress-run": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
             "devServerTarget": "pet-adoption-angular:serve"
           },
           "configurations": {
@@ -124,9 +110,30 @@
               "devServerTarget": "pet-adoption-angular:serve:production"
             }
           }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": true,
+            "headless": false
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "pet-adoption-angular"
+  "cli": {
+    "analytics": false,
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
+  }
 }

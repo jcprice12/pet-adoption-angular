@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { CatService } from 'src/app/services/cat.service';
-import { PetsComponent } from '../pets.component';
+import { CatService } from '../../../../services/cat.service';
+import { PetsDirective } from '../../../../directives/pets/pets.directive';
 
 @Component({
   templateUrl: './cats.component.html',
 })
-export class CatsComponent extends PetsComponent {
+export class CatsComponent extends PetsDirective {
   constructor(catService: CatService) {
     super(catService);
   }

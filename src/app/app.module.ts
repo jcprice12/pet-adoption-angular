@@ -1,4 +1,8 @@
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -35,6 +39,7 @@ import { PetCardComponent } from './components/pet-card/pet-card.component';
 import { PetsGridComponent } from './components/pets-grid/pets-grid.component';
 import { FormDirective } from './directives/form/form.directive';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { DynamicFormComponent } from './components/forms/dynamic-form/dynamic-form.component';
 
 @NgModule({
   declarations: [
@@ -59,12 +64,13 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     NewDogComponent,
     NewDogFormComponent,
     IconLinkComponent,
+    DynamicFormComponent,
   ],
+  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule,
     ReactiveFormsModule,
     MatButtonModule,
     MatCardModule,
@@ -82,8 +88,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
       useClass: TokenInterceptorService,
       multi: true,
     },
+    provideHttpClient(withInterceptorsFromDi()),
   ],
-  bootstrap: [AppComponent],
-  entryComponents: [LoginFormComponent, RegisterFormComponent],
 })
 export class AppModule {}

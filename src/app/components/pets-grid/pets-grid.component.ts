@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { PetUI } from 'src/app/models/ui/pet-ui.model';
+import { PetUI } from '../../models/ui/pet-ui.model';
 
 @Component({
   selector: 'app-pets-grid',

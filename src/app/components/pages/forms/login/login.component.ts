@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { FormComponentWrapper } from 'src/app/models/ui/form-component-wrapper.model';
+import { FormComponentWrapper } from '../../../../models/ui/form-component-wrapper.model';
 import { LoginFormComponent } from '../../../forms/login-form/login-form.component';
-import { FormLink } from 'src/app/models/ui/form-link.model';
+import { FormLink } from '../../../../models/ui/form-link.model';
 
 @Component({
   templateUrl: './login.component.html',

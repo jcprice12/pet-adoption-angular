@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IconLink } from 'src/app/models/ui/icon-link.model';
+import { IconLink } from '../../../../models/ui/icon-link.model';
 
 @Component({
   selector: 'app-pets-page-header',
