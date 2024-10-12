@@ -18,14 +18,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginFormComponent } from './components/forms/login-form/login-form.component';
 import { NewDogFormComponent } from './components/forms/new-dog-form/new-dog-form.component';
-import { RegisterFormComponent } from './components/forms/register-form/register-form.component';
 import { IconLinkComponent } from './components/icon-link/icon-link.component';
 import { FormPageComponent } from './components/pages/forms/form-page/form-page.component';
-import { LoginComponent } from './components/pages/forms/login/login.component';
 import { NewDogComponent } from './components/pages/forms/new-dog/new-dog.component';
-import { RegisterComponent } from './components/pages/forms/register/register.component';
 import { HeaderComponent } from './components/pages/header/header.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
@@ -49,17 +45,13 @@ import { DynamicFormComponent } from './components/forms/dynamic-form/dynamic-fo
     FishComponent,
     HomeComponent,
     NotFoundComponent,
-    LoginComponent,
-    RegisterComponent,
     HeaderComponent,
     PetsGridComponent,
     PetCardComponent,
     PetsPageHeaderComponent,
     PetsPageComponent,
     FormPageComponent,
-    LoginFormComponent,
     FormDirective,
-    RegisterFormComponent,
     AllPetsComponent,
     NewDogComponent,
     NewDogFormComponent,

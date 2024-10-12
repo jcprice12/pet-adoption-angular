@@ -1,30 +1,29 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { TokenService } from './token.service';
-import { ApplicationUser } from '../models/rest-api/application-user.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  private readonly baseUrl = 'oauth';
+  private readonly authUrl = `${this.baseUrl}/authorization`;
+  private readonly tokenUrl = `${this.baseUrl}/token`;
+
   constructor(
     private readonly http: HttpClient,
     private readonly tokenService: TokenService
   ) {}
 
-  public login(_applicationUser: ApplicationUser): Observable<void> {
-    // return this.http
-    //   .post<void>('/api/users/login', applicationUser, { observe: 'response' })
-    //   .pipe(
-    //     map((response: HttpResponse<void>) => {
-    //       this.tokenService.setToken(response.headers.get('Authorization'));
-    //     })
-    //   );
-    return of();
-  }
-
-  public register(applicationUser: ApplicationUser): Observable<void> {
-    return this.http.post<void>('/api/users/register', applicationUser);
+  public login(): Observable<unknown> {
+    return this.http.get('oauth/authorize', {
+      params: {
+        client_id: '123',
+        response_type: 'code',
+        scope: 'openid email jcpets:roles jcpets:pets:write',
+        prompt: 'login consent',
+      },
+    });
   }
 }

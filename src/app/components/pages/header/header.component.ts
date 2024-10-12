@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { IconLink } from '../../../models/ui/icon-link.model';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,15 +10,20 @@ import { IconLink } from '../../../models/ui/icon-link.model';
 })
 export class HeaderComponent {
   readonly homeLink: IconLink = {
-    url: '/home',
+    action: () => this.router.navigate(['/home']),
     toolTip: 'home',
     ariaLabel: 'home',
     icon: 'home',
   };
   readonly loginLink: IconLink = {
-    url: '/login',
+    action: () => this.authService.login().subscribe((res) => console.log(res)),
     toolTip: 'login',
     ariaLabel: 'login',
-    icon: 'account_circle',
+    icon: 'login',
   };
+
+  constructor(
+    private readonly router: Router,
+    private readonly authService: AuthService
+  ) {}
 }

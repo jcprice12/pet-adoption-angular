@@ -5,6 +5,13 @@ const PROXY_CONFIG = {
         pathRewrite: {
             '^/api': ''
         }
+    },
+    '/oauth': {
+        target: 'http://localhost:3000',
+        secure: false,
+        pathRewrite: {
+            '^/oauth': ''
+        }
     }
 }
 
