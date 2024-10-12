@@ -1,20 +1,18 @@
 import { TestBed } from '@angular/core/testing';
+import { AuthService } from './auth.service';
 import { TokenInterceptorService } from './token-interceptor.service';
-import { TokenService } from './token.service';
 
 describe('TokenInterceptorService', () => {
   let service: TokenInterceptorService;
-  let getTokenMock: jest.Mock;
 
   beforeEach(() => {
-    getTokenMock = jest.fn();
     TestBed.configureTestingModule({
       providers: [
         TokenInterceptorService,
         {
-          provide: TokenService,
+          provide: AuthService,
           useValue: {
-            getToken: getTokenMock,
+            tokens: {},
           },
         },
       ],

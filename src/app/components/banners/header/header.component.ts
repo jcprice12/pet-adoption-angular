@@ -16,7 +16,9 @@ export class HeaderComponent {
     icon: 'home',
   };
   readonly loginLink: IconLink = {
-    action: () => this.authService.login().subscribe((res) => console.log(res)),
+    action: () => {
+      this.authService.login().subscribe();
+    },
     toolTip: 'login',
     ariaLabel: 'login',
     icon: 'login',

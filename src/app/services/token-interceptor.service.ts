@@ -1,33 +1,32 @@
-import { Injectable } from '@angular/core';
 import {
+  HttpEvent,
+  HttpHandler,
   HttpInterceptor,
   HttpRequest,
-  HttpHandler,
-  HttpEvent,
 } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TokenService } from './token.service';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class TokenInterceptorService implements HttpInterceptor {
-  constructor(private readonly tokenService: TokenService) {}
+  constructor(private readonly authService: AuthService) {}
 
   intercept(
     req: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     let newHeaders = req.headers;
-    if (this.tokenService.getToken() && this.isStateChangeMethod(req.method)) {
+    if (this.authService.tokens && this.isStateChangeMethod(req.method)) {
       newHeaders = newHeaders.append(
         'Authorization',
-        this.tokenService.getToken()
+        this.authService.tokens.access_token
       );
     }
     return next.handle(req.clone({ headers: newHeaders }));
   }
 
   private isStateChangeMethod(method: string): boolean {
-    console.log('Method is:', method);
     return method === 'POST' || method === 'PUT' || method === 'DELETE';
   }
 }
