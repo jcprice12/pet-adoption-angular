@@ -18,7 +18,7 @@ describe('IconLinkComponent', () => {
     fixture = TestBed.createComponent(IconLinkComponent);
     component = fixture.componentInstance;
     component.iconLink = {
-      url: 'https://my.icon.com/foo.jpg',
+      action: () => undefined,
       toolTip: 'my-icon',
       ariaLabel: 'my-icon',
       icon: 'my-icon',

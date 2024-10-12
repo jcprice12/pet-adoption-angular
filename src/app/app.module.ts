@@ -22,14 +22,14 @@ import { NewDogFormComponent } from './components/forms/new-dog-form/new-dog-for
 import { IconLinkComponent } from './components/icon-link/icon-link.component';
 import { FormPageComponent } from './components/pages/forms/form-page/form-page.component';
 import { NewDogComponent } from './components/pages/forms/new-dog/new-dog.component';
-import { HeaderComponent } from './components/pages/header/header.component';
+import { HeaderComponent } from './components/banners/header/header.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 import { AllPetsComponent } from './components/pages/pets/all-pets/all-pets.component';
 import { CatsComponent } from './components/pages/pets/cats/cats.component';
 import { DogsComponent } from './components/pages/pets/dogs/dogs.component';
 import { FishComponent } from './components/pages/pets/fish/fish.component';
-import { PetsPageHeaderComponent } from './components/pages/pets/pets-page-header/pets-page-header.component';
+import { PetsPageHeaderComponent } from './components/banners/pets-page-header/pets-page-header.component';
 import { PetsPageComponent } from './components/pages/pets/pets-page/pets-page.component';
 import { PetCardComponent } from './components/pet-card/pet-card.component';
 import { PetsGridComponent } from './components/pets-grid/pets-grid.component';
