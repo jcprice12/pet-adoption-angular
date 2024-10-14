@@ -13,6 +13,10 @@ const PROXY_CONFIG = {
     '/token': {
         target: 'http://localhost:3000',
         secure: false,
+    },
+    '/keys': {
+        target: 'http://localhost:3000',
+        secure: false,
     }
 }
 

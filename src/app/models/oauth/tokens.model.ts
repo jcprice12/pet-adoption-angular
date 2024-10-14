@@ -3,5 +3,5 @@ export interface Tokens {
   scope: string;
   expires_in: number;
   token_type: string;
-  id_token: string;
+  id_token?: string;
 }

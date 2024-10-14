@@ -1,8 +1,9 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { catchError, finalize, mergeMap, of, tap } from 'rxjs';
+import { CodedError } from '../../../models/error/coded.error';
 import { AuthService } from '../../../services/auth.service';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   templateUrl: './login.component.html',
@@ -37,14 +38,20 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  getErrorDescription(error: HttpErrorResponse | string) {
+  getErrorDescription(
+    error: CodedError | HttpErrorResponse | string | unknown
+  ) {
     if (typeof error === 'string') {
       return this.getErrorDescriptionFromCode(error);
+    } else if (this.isHttpErrorResponse(error)) {
+      return this.getErrorDescriptionFromCode(error.error.error);
+    } else if (this.isErrorWithCode(error)) {
+      return this.getErrorDescriptionFromCode(error.code);
     }
-    return this.getErrorDescriptionFromCode(error.error.error);
+    return this.getErrorDescriptionFromCode(undefined);
   }
 
-  getErrorDescriptionFromCode(error: string): string {
+  private getErrorDescriptionFromCode(error: string): string {
     const errorDescriptionMapping = new Map<string, string>([
       [
         'consent_required',
@@ -55,5 +62,15 @@ export class LoginComponent implements OnInit {
       errorDescriptionMapping.get(error) ||
       'An unknown error occurred while logging in. Please try again later.'
     );
+  }
+
+  private isHttpErrorResponse(error: {
+    error?: unknown;
+  }): error is HttpErrorResponse {
+    return !!error.error;
+  }
+
+  private isErrorWithCode(error: { code?: unknown }): error is CodedError {
+    return !!error.code;
   }
 }
