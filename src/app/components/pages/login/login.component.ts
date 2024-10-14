@@ -1,16 +1,21 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { catchError, finalize, mergeMap, of, tap } from 'rxjs';
+import { EMPTY, catchError, finalize, mergeMap, of, tap } from 'rxjs';
 import { CodedError } from '../../../models/error/coded.error';
 import { AuthService } from '../../../services/auth.service';
+
+interface QueryParams {
+  code?: string;
+  error?: string;
+  state?: string;
+}
 
 @Component({
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss', '../../../../styles.scss'],
 })
 export class LoginComponent implements OnInit {
-  queryParams: { code?: string; error?: string };
   finalizingAuth: boolean;
   error: HttpErrorResponse | string;
 
@@ -20,21 +25,24 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.queryParams = this.route.snapshot.queryParams;
-    if (this.queryParams.code) {
+    const queryParams: QueryParams = this.route.snapshot.queryParams;
+    if (queryParams.code) {
       of({})
         .pipe(
-          tap(() => (this.finalizingAuth = true)),
-          mergeMap(() => this.authService.getTokens(this.queryParams.code)),
+          tap(() => {
+            this.finalizingAuth = true;
+            this.authService.verifyStateMatches(queryParams.state);
+          }),
+          mergeMap(() => this.authService.getTokens(queryParams.code)),
           catchError((e) => {
             this.error = e;
-            return of({});
+            return EMPTY;
           }),
           finalize(() => (this.finalizingAuth = false))
         )
         .subscribe();
-    } else if (this.queryParams.error) {
-      this.error = this.queryParams.error;
+    } else if (queryParams.error) {
+      this.error = queryParams.error;
     }
   }
 
@@ -60,7 +68,7 @@ export class LoginComponent implements OnInit {
     ]);
     return (
       errorDescriptionMapping.get(error) ||
-      'An unknown error occurred while logging in. Please try again later.'
+      'An error occurred while logging in. Please try again later.'
     );
   }
 
