@@ -5,7 +5,17 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .formField { width: 100%; }
 
-.center {
+.jcp-center-style {
   margin-left: auto;
   margin-right: auto;
+}
+
+.jcp-title-style {
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 16px;
+}
+
+.jcp-content-style {
+  padding-top: 8px;
 }

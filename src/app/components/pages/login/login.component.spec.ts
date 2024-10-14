@@ -20,7 +20,7 @@ describe('LoginComponent', () => {
         {
           provide: AuthService,
           useValue: {
-            getToken: jest.fn,
+            getTokens: jest.fn,
           },
         },
       ],
