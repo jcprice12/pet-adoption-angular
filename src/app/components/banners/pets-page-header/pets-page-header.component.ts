@@ -4,7 +4,7 @@ import { IconLink } from '../../../models/ui/icon-link.model';
 @Component({
   selector: 'app-pets-page-header',
   templateUrl: './pets-page-header.component.html',
-  styleUrls: ['./pets-page-header.component.css'],
+  styleUrls: ['./pets-page-header.component.scss'],
 })
 export class PetsPageHeaderComponent {
   @Input() readonly title: string;

@@ -17,16 +17,12 @@ export class TokenInterceptorService implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     let newHeaders = req.headers;
-    if (this.authService.tokens && this.isStateChangeMethod(req.method)) {
+    if (this.authService.tokens) {
       newHeaders = newHeaders.append(
         'Authorization',
-        this.authService.tokens.access_token
+        `Bearer ${this.authService.tokens.access_token}`
       );
     }
     return next.handle(req.clone({ headers: newHeaders }));
-  }
-
-  private isStateChangeMethod(method: string): boolean {
-    return method === 'POST' || method === 'PUT' || method === 'DELETE';
   }
 }

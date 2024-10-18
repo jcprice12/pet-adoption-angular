@@ -17,8 +17,10 @@ import {
 import { v4 as uuidv4 } from 'uuid';
 import { environment } from '../../environments/environment';
 import { CodedError } from '../models/error/coded.error';
+import { IdTokenPayload } from '../models/oauth/id-token-payload.model';
 import { JWKS } from '../models/oauth/jwks.model';
 import { Tokens } from '../models/oauth/tokens.model';
+import { UserInfo } from '../models/oauth/user-info.model';
 
 @Injectable({
   providedIn: 'root',
@@ -30,9 +32,11 @@ export class AuthService {
   private readonly authUrl = '/authorize';
   private readonly tokenUrl = '/token';
   private readonly jwksUrl = '/keys';
+  private readonly userInfoUrl = '/userinfo';
   private readonly desiredScopes =
     'openid email jcpets:roles jcpets:pets:write';
   tokens: Tokens;
+  userInfo: UserInfo;
 
   constructor(
     private readonly http: HttpClient,
@@ -54,7 +58,7 @@ export class AuthService {
     }
   }
 
-  public getTokens(code: string): Observable<unknown> {
+  public getTokens(code: string): Observable<Tokens> {
     return this.http
       .post(this.tokenUrl, {
         code,
@@ -67,7 +71,13 @@ export class AuthService {
         mergeMap((tokens: Tokens) =>
           iif(
             () => !!tokens.id_token,
-            this.verifyIdToken(tokens.id_token).pipe(map(() => tokens)),
+            this.verifyIdToken(tokens.id_token).pipe(
+              map((verifyResult) => {
+                tokens.id_token_payload =
+                  verifyResult.payload as unknown as IdTokenPayload;
+                return tokens;
+              })
+            ),
             of(tokens)
           )
         ),
@@ -77,7 +87,32 @@ export class AuthService {
       );
   }
 
-  private verifyIdToken(idToken: string): Observable<unknown> {
+  public getUserInfo(): Observable<UserInfo> {
+    return this.http.get<UserInfo>(this.userInfoUrl).pipe(
+      tap((userInfo) => {
+        this.userInfo = userInfo;
+      })
+    );
+  }
+
+  public isUserInfoComplete(): boolean {
+    if (!this.userInfo) {
+      return false;
+    }
+    if (!this.userInfo.email) {
+      return false;
+    }
+    if (!this.userInfo['jcpets:roles']) {
+      return false;
+    }
+    return true;
+  }
+
+  private verifyIdToken(
+    idToken: string
+  ): Observable<
+    jose.JWTVerifyResult<jose.JWTPayload> & jose.ResolvedKey<jose.KeyLike>
+  > {
     return this.getKeyLike().pipe(
       catchError(() => throwError(() => new CodedError('invalid_jwk'))),
       mergeMap((keylike) =>

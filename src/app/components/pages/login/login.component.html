@@ -1,7 +1,7 @@
-<div class="jcp-center-style my-container">
+<div class="jcp-center-style jcp-page-card-style">
   <mat-card *ngIf="finalizingAuth">
     <mat-card-title class="jcp-title-style">
-      <div class="title-container">
+      <div class="jcp-title-body-style">
         Finalizing authentication&nbsp;<mat-spinner diameter="20"></mat-spinner>
       </div>
     </mat-card-title>
@@ -11,7 +11,7 @@
   </mat-card>
   <mat-card *ngIf="!finalizingAuth && !error">
     <mat-card-title class="jcp-title-style">
-      <div class="title-container">
+      <div class="jcp-title-body-style">
         You're logged in!&nbsp;<mat-icon style="color: green;">check_circle</mat-icon>
       </div>
     </mat-card-title>
@@ -24,7 +24,7 @@
   </mat-card>
   <mat-card *ngIf="!finalizingAuth && error">
     <mat-card-title class="jcp-title-style">
-      <div class="title-container">
+      <div class="jcp-title-body-style">
         There was an error logging in!&nbsp;<mat-icon style="color: red;">error</mat-icon>
       </div>
     </mat-card-title>

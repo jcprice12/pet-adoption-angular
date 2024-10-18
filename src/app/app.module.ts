@@ -38,6 +38,7 @@ import { PetCardComponent } from './components/pet-card/pet-card.component';
 import { PetsGridComponent } from './components/pets-grid/pets-grid.component';
 import { FormDirective } from './directives/form/form.directive';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { ProfileComponent } from './components/pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
   ],
   bootstrap: [AppComponent],
   imports: [
+    ProfileComponent,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

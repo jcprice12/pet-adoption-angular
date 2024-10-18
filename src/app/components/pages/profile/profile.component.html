@@ -1,0 +1,21 @@
+<div class="jcp-center-style jcp-page-card-style">
+  <mat-card>
+    <mat-card-title class="jcp-title-style">
+      <div class=jcp-title-body-style>
+        Profile
+        @if(error){
+        &nbsp;<mat-icon style="color: red;">error</mat-icon>
+        } @else if(!isUserInfoComplete) {
+        &nbsp;<mat-icon style="color: orange;">error</mat-icon>
+        }
+      </div>
+    </mat-card-title>
+    <mat-card-content class="jcp-content-style">
+      @if(userInfo){
+      <p>{{userInfo.given_name}} {{userInfo.family_name}}</p>
+      } @else {
+      <p>Could not retrieve your user information.</p>
+      }
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -17,6 +17,10 @@ const PROXY_CONFIG = {
     '/keys': {
         target: 'http://localhost:3000',
         secure: false,
+    },
+    '/userinfo': {
+        target: 'http://localhost:3000',
+        secure: false,
     }
 }
 

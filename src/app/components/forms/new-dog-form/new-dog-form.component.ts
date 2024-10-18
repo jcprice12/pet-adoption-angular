@@ -10,7 +10,7 @@ import { mergeMap } from 'rxjs/operators';
 
 @Component({
   templateUrl: './new-dog-form.component.html',
-  styleUrls: ['./new-dog-form.component.css'],
+  styleUrls: ['./new-dog-form.component.scss'],
 })
 export class NewDogFormComponent implements FormComponent {
   private selectedFile: File;

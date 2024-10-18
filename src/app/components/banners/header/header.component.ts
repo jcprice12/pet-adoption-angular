@@ -6,7 +6,7 @@ import { AuthService } from '../../../services/auth.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css'],
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
   readonly homeLink: IconLink = {
@@ -23,9 +23,15 @@ export class HeaderComponent {
     ariaLabel: 'login',
     icon: 'login',
   };
+  readonly profileLink: IconLink = {
+    action: () => this.router.navigate(['/profile']),
+    toolTip: 'profile',
+    ariaLabel: 'profile',
+    icon: 'person',
+  };
 
   constructor(
     private readonly router: Router,
-    private readonly authService: AuthService
+    public readonly authService: AuthService
   ) {}
 }
