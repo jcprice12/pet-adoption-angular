@@ -1,28 +1,26 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CreateMutable } from '../../../../testing';
-import { IconLinkComponent } from './icon-link.component';
+import { MatMenuModule } from '@angular/material/menu';
 
-describe('IconLinkComponent', () => {
-  let component: CreateMutable<IconLinkComponent>;
-  let fixture: ComponentFixture<IconLinkComponent>;
+import { HttpClient } from '@angular/common/http';
+import { HeaderComponent } from './header.component';
+
+describe('HeaderComponent', () => {
+  let component: HeaderComponent;
+  let fixture: ComponentFixture<HeaderComponent>;
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      declarations: [IconLinkComponent],
+      declarations: [HeaderComponent],
+      providers: [{ provide: HttpClient, useValue: { get: jest.fn } }],
+      imports: [MatMenuModule],
       schemas: [NO_ERRORS_SCHEMA], // see https://angular.io/guide/testing-components-scenarios#nested-component-tests
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(IconLinkComponent);
+    fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
-    component.iconLink = {
-      action: () => undefined,
-      toolTip: 'my-icon',
-      ariaLabel: 'my-icon',
-      icon: 'my-icon',
-    };
     fixture.detectChanges();
   });
 

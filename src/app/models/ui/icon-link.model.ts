@@ -1,5 +1,5 @@
 export interface IconLink {
-  url: string;
+  action: () => void;
   toolTip: string;
   ariaLabel: string;
   icon: string;

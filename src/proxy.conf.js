@@ -5,6 +5,22 @@ const PROXY_CONFIG = {
         pathRewrite: {
             '^/api': ''
         }
+    },
+    '/authorize': {
+        target: 'http://localhost:3000',
+        secure: false,
+    },
+    '/token': {
+        target: 'http://localhost:3000',
+        secure: false,
+    },
+    '/keys': {
+        target: 'http://localhost:3000',
+        secure: false,
+    },
+    '/userinfo': {
+        target: 'http://localhost:3000',
+        secure: false,
     }
 }
 

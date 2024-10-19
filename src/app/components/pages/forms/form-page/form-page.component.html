@@ -1,8 +1,7 @@
-<app-header class="header"></app-header>
-<div class="cardContainer">
-    <mat-card class="card">
-        <mat-card-title>{{title}}</mat-card-title>
-        <mat-card-content>
+<div class="jcp-center-style jcp-page-card-style">
+    <mat-card>
+        <mat-card-title class="jcp-title-style">{{title}}</mat-card-title>
+        <mat-card-content class="jcp-content-style">
             <app-dynamic-form [formComponentWrapper]="formComponentWrapper"></app-dynamic-form>
         </mat-card-content>
         <mat-card-actions align="end" *ngIf="formLink">

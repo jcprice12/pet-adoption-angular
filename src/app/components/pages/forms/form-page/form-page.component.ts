@@ -5,7 +5,7 @@ import { FormLink } from '../../../../models/ui/form-link.model';
 @Component({
   selector: 'app-form-page',
   templateUrl: './form-page.component.html',
-  styleUrls: ['./form-page.component.css'],
+  styleUrls: ['../../../../../styles.scss'],
 })
 export class FormPageComponent implements OnInit {
   @Input() readonly title: string;

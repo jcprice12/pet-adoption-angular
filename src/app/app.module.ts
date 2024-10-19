@@ -13,33 +13,32 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginFormComponent } from './components/forms/login-form/login-form.component';
+import { HeaderComponent } from './components/banners/header/header.component';
+import { PetsPageHeaderComponent } from './components/banners/pets-page-header/pets-page-header.component';
+import { DynamicFormComponent } from './components/forms/dynamic-form/dynamic-form.component';
 import { NewDogFormComponent } from './components/forms/new-dog-form/new-dog-form.component';
-import { RegisterFormComponent } from './components/forms/register-form/register-form.component';
 import { IconLinkComponent } from './components/icon-link/icon-link.component';
 import { FormPageComponent } from './components/pages/forms/form-page/form-page.component';
-import { LoginComponent } from './components/pages/forms/login/login.component';
 import { NewDogComponent } from './components/pages/forms/new-dog/new-dog.component';
-import { RegisterComponent } from './components/pages/forms/register/register.component';
-import { HeaderComponent } from './components/pages/header/header.component';
 import { HomeComponent } from './components/pages/home/home.component';
+import { LoginComponent } from './components/pages/login/login.component';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 import { AllPetsComponent } from './components/pages/pets/all-pets/all-pets.component';
 import { CatsComponent } from './components/pages/pets/cats/cats.component';
 import { DogsComponent } from './components/pages/pets/dogs/dogs.component';
 import { FishComponent } from './components/pages/pets/fish/fish.component';
-import { PetsPageHeaderComponent } from './components/pages/pets/pets-page-header/pets-page-header.component';
 import { PetsPageComponent } from './components/pages/pets/pets-page/pets-page.component';
 import { PetCardComponent } from './components/pet-card/pet-card.component';
 import { PetsGridComponent } from './components/pets-grid/pets-grid.component';
 import { FormDirective } from './directives/form/form.directive';
 import { TokenInterceptorService } from './services/token-interceptor.service';
-import { DynamicFormComponent } from './components/forms/dynamic-form/dynamic-form.component';
+import { ProfileComponent } from './components/pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -49,25 +48,23 @@ import { DynamicFormComponent } from './components/forms/dynamic-form/dynamic-fo
     FishComponent,
     HomeComponent,
     NotFoundComponent,
-    LoginComponent,
-    RegisterComponent,
     HeaderComponent,
     PetsGridComponent,
     PetCardComponent,
     PetsPageHeaderComponent,
     PetsPageComponent,
     FormPageComponent,
-    LoginFormComponent,
     FormDirective,
-    RegisterFormComponent,
     AllPetsComponent,
     NewDogComponent,
     NewDogFormComponent,
     IconLinkComponent,
     DynamicFormComponent,
+    LoginComponent,
   ],
   bootstrap: [AppComponent],
   imports: [
+    ProfileComponent,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -81,6 +78,7 @@ import { DynamicFormComponent } from './components/forms/dynamic-form/dynamic-fo
     MatMenuModule,
     MatToolbarModule,
     MatTooltipModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     {

@@ -1,0 +1,19 @@
+<mat-toolbar class="header" color="primary">
+    <span>Pet Stop</span>
+    <app-icon-link [iconLink]="homeLink"></app-icon-link>
+    <button mat-icon-button matTooltip="pets" [matMenuTriggerFor]="pets" aria-label="pets">
+        <mat-icon>pets</mat-icon>
+    </button>
+    <span class="fill"></span>
+    @if(!authService.tokens){
+    <app-icon-link [iconLink]="loginLink"></app-icon-link>
+    } @else {
+    <app-icon-link [iconLink]="profileLink"></app-icon-link>
+    }
+</mat-toolbar>
+<mat-menu #pets="matMenu">
+    <a routerLink="/all-pets" mat-menu-item>All</a>
+    <a routerLink="/dogs" mat-menu-item>Dogs</a>
+    <a routerLink="/cats" mat-menu-item>Cats</a>
+    <a routerLink="/fish" mat-menu-item>Fish</a>
+</mat-menu>

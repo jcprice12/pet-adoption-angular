@@ -1,0 +1,38 @@
+<div class="jcp-center-style jcp-page-card-style">
+  <mat-card *ngIf="finalizingAuth">
+    <mat-card-title class="jcp-title-style">
+      <div class="jcp-title-body-style">
+        Finalizing authentication&nbsp;<mat-spinner diameter="20"></mat-spinner>
+      </div>
+    </mat-card-title>
+    <mat-card-content class="jcp-content-style">
+      Please wait a moment while we finish the authentication process.
+    </mat-card-content>
+  </mat-card>
+  <mat-card *ngIf="!finalizingAuth && !error">
+    <mat-card-title class="jcp-title-style">
+      <div class="jcp-title-body-style">
+        You're logged in!&nbsp;<mat-icon style="color: green;">check_circle</mat-icon>
+      </div>
+    </mat-card-title>
+    <mat-card-content class="jcp-content-style">
+      Enjoy your time exploring the site.
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <a routerLink="/home" mat-button>Go home</a>
+    </mat-card-actions>
+  </mat-card>
+  <mat-card *ngIf="!finalizingAuth && error">
+    <mat-card-title class="jcp-title-style">
+      <div class="jcp-title-body-style">
+        Login error!&nbsp;<mat-icon style="color: red;">error</mat-icon>
+      </div>
+    </mat-card-title>
+    <mat-card-content class="jcp-content-style">
+      {{getErrorDescription()}}
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <a routerLink="/home" mat-button>Go home</a>
+    </mat-card-actions>
+  </mat-card>
+</div>
