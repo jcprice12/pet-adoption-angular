@@ -18,6 +18,11 @@ export class UserInfoService {
   }
 
   public isUserInfoComplete(userInfo: UserInfo | undefined): boolean {
-    return !!(userInfo?.email && userInfo['jcpets:roles']);
+    return !!(
+      userInfo?.family_name &&
+      userInfo.given_name &&
+      userInfo.email &&
+      userInfo['jcpets:roles']
+    );
   }
 }
