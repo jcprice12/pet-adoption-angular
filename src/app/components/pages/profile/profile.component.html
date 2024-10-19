@@ -11,10 +11,12 @@
       </div>
     </mat-card-title>
     <mat-card-content class="jcp-content-style">
-      @if(userInfo){
+      @if(error){
+      <p>{{getErrorDescription()}}</p>
+      } @else if(userInfo){
       <p>{{userInfo.given_name}} {{userInfo.family_name}}</p>
       } @else {
-      <p>Could not retrieve your user information.</p>
+      <p>We cannot show you your profile because you have not provided consent.</p>
       }
     </mat-card-content>
   </mat-card>

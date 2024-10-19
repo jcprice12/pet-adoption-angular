@@ -16,9 +16,17 @@ import {
 } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
 import { environment } from '../../environments/environment';
-import { CodedError } from '../models/error/coded.error';
+import { AuthorizeCallbackError } from '../errors/authorize-callback.error';
+import { AuthorizeError } from '../errors/authorize.error';
+import { InvalidJwkError } from '../errors/invalid-jwk.error';
+import { InvalidStateError } from '../errors/invalid-state.error';
+import { InvalidTokenError } from '../errors/invalid-token.error';
+import { TokenRetrievalError } from '../errors/token-retrieval.error';
+import { AuthorizeResponse } from '../models/oauth/authorize-response.model';
+import { Challenge } from '../models/oauth/challenge.model';
 import { IdTokenPayload } from '../models/oauth/id-token-payload.model';
 import { JWKS } from '../models/oauth/jwks.model';
+import { KeyLikeCallback } from '../models/oauth/key-like-callback.type';
 import { Tokens } from '../models/oauth/tokens.model';
 import { UserInfo } from '../models/oauth/user-info.model';
 
@@ -28,11 +36,6 @@ import { UserInfo } from '../models/oauth/user-info.model';
 export class AuthService {
   private readonly stateKey = 'pet-auth-state';
   private readonly challengeKey = 'pet-auth-challenge';
-  private readonly clientId = '6efb7ff9-75b8-4073-8412-3b548921cc47';
-  private readonly authUrl = '/authorize';
-  private readonly tokenUrl = '/token';
-  private readonly jwksUrl = '/keys';
-  private readonly userInfoUrl = '/userinfo';
   private readonly desiredScopes =
     'openid email jcpets:roles jcpets:pets:write';
   tokens: Tokens;
@@ -51,99 +54,84 @@ export class AuthService {
     return this.authorize('consent');
   }
 
-  public verifyStateMatches(receivedState: string): void {
-    const storedState = this.getState();
-    if (storedState !== receivedState) {
-      throw new CodedError('invalid_state');
-    }
-  }
-
-  public getTokens(code: string): Observable<Tokens> {
-    return this.http
-      .post(this.tokenUrl, {
-        code,
-        grant_type: 'authorization_code',
-        redirect_uri: environment.redirectUri,
-        client_id: this.clientId,
-        code_verifier: this.getChallenge().code_verifier,
-      })
-      .pipe(
-        mergeMap((tokens: Tokens) =>
+  public handleAuthorizeResponse(
+    authorizeResponse: AuthorizeResponse
+  ): Observable<Tokens> {
+    return iif(
+      () => !!authorizeResponse.code,
+      of({}).pipe(
+        tap(() => this.verifyStateMatches(authorizeResponse.state)),
+        mergeMap(() => this.getTokens(authorizeResponse.code)),
+        mergeMap((tokens) =>
           iif(
-            () => !!tokens.id_token,
-            this.verifyIdToken(tokens.id_token).pipe(
-              map((verifyResult) => {
-                tokens.id_token_payload =
-                  verifyResult.payload as unknown as IdTokenPayload;
+            () => !!tokens,
+            this.verifyToken<IdTokenPayload>(tokens.id_token).pipe(
+              map((payload) => {
+                tokens.id_token_payload = payload;
                 return tokens;
               })
             ),
             of(tokens)
           )
         ),
-        tap((tokens: Tokens) => {
+        tap((tokens) => {
           this.tokens = tokens;
         })
-      );
-  }
-
-  public getUserInfo(): Observable<UserInfo> {
-    return this.http.get<UserInfo>(this.userInfoUrl).pipe(
-      tap((userInfo) => {
-        this.userInfo = userInfo;
-      })
+      ),
+      throwError(() => new AuthorizeCallbackError(authorizeResponse.error))
     );
   }
 
-  public isUserInfoComplete(): boolean {
-    if (!this.userInfo) {
-      return false;
+  private verifyStateMatches(receivedState: string): void {
+    const storedState = this.getState();
+    if (storedState !== receivedState) {
+      throw new InvalidStateError();
     }
-    if (!this.userInfo.email) {
-      return false;
-    }
-    if (!this.userInfo['jcpets:roles']) {
-      return false;
-    }
-    return true;
   }
 
-  private verifyIdToken(
-    idToken: string
-  ): Observable<
-    jose.JWTVerifyResult<jose.JWTPayload> & jose.ResolvedKey<jose.KeyLike>
-  > {
+  private getTokens(code: string): Observable<Tokens> {
+    return this.http
+      .post<Tokens>('/token', {
+        code,
+        grant_type: 'authorization_code',
+        redirect_uri: environment.redirectUri,
+        client_id: environment.clientId,
+        code_verifier: this.getChallenge().code_verifier,
+      })
+      .pipe(catchError((e) => throwError(() => new TokenRetrievalError(e))));
+  }
+
+  private verifyToken<T>(token: string): Observable<T> {
     return this.getKeyLike().pipe(
-      catchError(() => throwError(() => new CodedError('invalid_jwk'))),
       mergeMap((keylike) =>
-        from(jose.jwtVerify(idToken, keylike)).pipe(
-          catchError(() => throwError(() => new CodedError('invalid_id_token')))
+        from(jose.jwtVerify(token, keylike)).pipe(
+          map((result) => result.payload as T),
+          catchError((e) => throwError(() => new InvalidTokenError(e)))
         )
       )
     );
   }
 
-  private getKeyLike(): Observable<
-    (
-      protectedHeader?: jose.JWSHeaderParameters,
-      token?: jose.FlattenedJWSInput
-    ) => Promise<jose.KeyLike>
-  > {
-    return this.http
-      .get<JWKS>(this.jwksUrl)
-      .pipe(map((jwks) => jose.createLocalJWKSet(jwks)));
+  private getKeyLike(): Observable<KeyLikeCallback> {
+    return this.http.get<JWKS>('/keys').pipe(
+      map((jwks) => jose.createLocalJWKSet(jwks)),
+      catchError((e) => throwError(() => new InvalidJwkError(e)))
+    );
   }
 
   private authorize(prompt: string): Observable<unknown> {
     this.setState();
     const state = this.getState();
-    return this.setChallenge().pipe(
+    return from(pkceChallenge()).pipe(
+      tap((challenge) => {
+        this.setChallenge(challenge);
+      }),
       mergeMap((challenge) => {
-        return this.http.get(this.authUrl, {
+        return this.http.get('/authorize', {
           observe: 'response',
           responseType: 'text',
           params: {
-            client_id: this.clientId,
+            client_id: environment.clientId,
             response_type: 'code',
             scope: this.desiredScopes,
             prompt,
@@ -153,6 +141,7 @@ export class AuthService {
           },
         });
       }),
+      catchError((e) => throwError(() => new AuthorizeError(e))),
       tap((res: { url?: string }) => {
         if (res.url) {
           this.document.location.href = res.url;
@@ -161,26 +150,19 @@ export class AuthService {
     );
   }
 
-  private setState(): void {
-    localStorage.setItem(this.stateKey, uuidv4());
+  private setState(state = uuidv4()): void {
+    localStorage.setItem(this.stateKey, state);
   }
 
   private getState(): string {
     return localStorage.getItem(this.stateKey);
   }
 
-  private setChallenge(): Observable<{
-    code_challenge: string;
-    code_verifier: string;
-  }> {
-    return from(pkceChallenge()).pipe(
-      tap((challenge) => {
-        localStorage.setItem(this.challengeKey, JSON.stringify(challenge));
-      })
-    );
+  private setChallenge(challenge: Challenge): void {
+    localStorage.setItem(this.challengeKey, JSON.stringify(challenge));
   }
 
-  private getChallenge(): { code_challenge: string; code_verifier: string } {
+  private getChallenge(): Challenge {
     return JSON.parse(localStorage.getItem(this.challengeKey));
   }
 }

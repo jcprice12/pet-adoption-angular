@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  redirectUri: 'http://localhost:4200/login'
+  redirectUri: 'http://localhost:4200/login',
+  clientId: '6efb7ff9-75b8-4073-8412-3b548921cc47'
 };
 
 /*
