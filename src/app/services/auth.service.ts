@@ -37,7 +37,7 @@ export class AuthService {
   private readonly stateKey = 'pet-auth-state';
   private readonly challengeKey = 'pet-auth-challenge';
   private readonly desiredScopes =
-    'openid email jcpets:roles jcpets:pets:write';
+    'openid profile email jcpets:roles jcpets:pets:write';
   tokens: Tokens;
   userInfo: UserInfo;
 
@@ -47,7 +47,7 @@ export class AuthService {
   ) {}
 
   public login(): Observable<unknown> {
-    return this.authorize('login');
+    return this.authorize('login consent');
   }
 
   public consent(): Observable<unknown> {
@@ -64,7 +64,7 @@ export class AuthService {
         mergeMap(() => this.getTokens(authorizeResponse.code)),
         mergeMap((tokens) =>
           iif(
-            () => !!tokens,
+            () => !!tokens.id_token,
             this.verifyToken<IdTokenPayload>(tokens.id_token).pipe(
               map((payload) => {
                 tokens.id_token_payload = payload;
@@ -130,6 +130,7 @@ export class AuthService {
         return this.http.get('/authorize', {
           observe: 'response',
           responseType: 'text',
+          withCredentials: true,
           params: {
             client_id: environment.clientId,
             response_type: 'code',

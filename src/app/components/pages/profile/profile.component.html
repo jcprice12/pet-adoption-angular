@@ -15,9 +15,15 @@
       <p>{{getErrorDescription()}}</p>
       } @else if(userInfo){
       <p>{{userInfo.given_name}} {{userInfo.family_name}}</p>
+      @if(userInfo.email) {
+      <p>{{userInfo.email}}</p>
+      }
       } @else {
-      <p>We cannot show you your profile because you have not provided consent.</p>
+      <p>We cannot show you your profile information because you have not provided consent.</p>
       }
     </mat-card-content>
+    <mat-card-actions align="end">
+      <button (click)="updateConsent()" mat-button>Update consent</button>
+    </mat-card-actions>
   </mat-card>
 </div>

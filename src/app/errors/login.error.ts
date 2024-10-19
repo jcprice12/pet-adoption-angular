@@ -1,9 +1,9 @@
 import { UIError } from './ui.error';
 
 export class LoginError extends UIError {
-  constructor(message: string, cause?: Error) {
+  constructor(message: string, cause?: Error, description?: string) {
     super(
-      "Something didn't quite line up while logging you in. Please try again later.",
+      description || "Something didn't quite line up. Please try again later.",
       message,
       cause
     );
