@@ -1,0 +1,15 @@
+services:
+  angular-app:
+    build: .
+    command: 'npm run start:dev'
+    container_name: angular-app
+    ports:
+      - '3001:3001'
+    environment:
+      API_PROXY_TARGET: 'http://host.docker.internal:8080'
+      OAUTH_PROXY_TARGET: 'http://host.docker.internal:3000'
+    develop:
+      watch:
+        - action: sync
+          path: ./src
+          target: /app/src
